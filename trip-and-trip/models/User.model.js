@@ -20,8 +20,8 @@ const userSchema = new Schema(
 
     role: {
       type: String,
-      enum: ['Iniciado', 'Chaman', 'Gran Hechicero'],
-      default: 'Iniciado'
+      enum: ['INITIATE', 'CHAMAN', 'PRIMARCH'],
+      default: 'INITIATE'
     },
 
     interests: {
