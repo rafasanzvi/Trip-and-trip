@@ -15,12 +15,12 @@ router.get('/plants', isLoggedIn, (req, res, next) => {
         .catch(err => console.log(err))
 })
 
-router.get('/plants/create', isLoggedIn, (req, res, next) => {
+router.get('/plants/create', isLoggedIn, checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
 
     res.render('plant/new-plant')
 })
 
-router.post('/plants/create', isLoggedIn, (req, res, next) => {
+router.post('/plants/create', isLoggedIn, checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
 
     const { sName, cName, region, culture, files, properties, description } = req.body
     const createPlant = req.body
@@ -31,7 +31,7 @@ router.post('/plants/create', isLoggedIn, (req, res, next) => {
         .catch(err => console.log(err))
 })
 
-router.get('/plants/:id', (req, res, next) => {
+router.get('/plants/:id', isLoggedIn, (req, res, next) => {
 
     const { id } = req.params
 
@@ -42,7 +42,7 @@ router.get('/plants/:id', (req, res, next) => {
 
 })
 
-router.get('/plants/:id/edit', (req, res, next) => {
+router.get('/plants/:id/edit', isLoggedIn, checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
 
     const { id } = req.params
 
@@ -52,7 +52,7 @@ router.get('/plants/:id/edit', (req, res, next) => {
         .catch(err => console.log(err))
 })
 
-router.post('/plants/:id/edit', (req, res, next) => {
+router.post('/plants/:id/edit', isLoggedIn, checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
 
     const { sName, cName, region, culture, files, properties, description } = req.body
     const createPlant = { sName, cName, region, culture, files, properties, description }
@@ -67,7 +67,7 @@ router.post('/plants/:id/edit', (req, res, next) => {
 
 })
 
-router.get('/plants/:id/delete', (req, res, next) => {
+router.get('/plants/:id/delete', checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
 
     const { id } = req.params
 
