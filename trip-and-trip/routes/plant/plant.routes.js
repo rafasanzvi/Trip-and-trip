@@ -1,9 +1,10 @@
 const router = require('express').Router()
-
 const Plant = require('./../../models/Plant.model')
+const { isLoggedIn } = require('./../../middleware/session-guard')
+const { checkRole } = require('./../../middleware/role-checker')
 
 
-router.get('/plants', (req, res, next) => {
+router.get('/plants', isLoggedIn, (req, res, next) => {
 
     Plant
         .find()
@@ -13,7 +14,7 @@ router.get('/plants', (req, res, next) => {
         .catch(err => console.log(err))
 })
 
-router.get('/plants/create', (req, res, next) => {
+router.get('/plants/create', isLoggedIn, checkRole('CHAMAN'), (req, res, next) => {
 
     res.render('plant/new-plant')
 })
