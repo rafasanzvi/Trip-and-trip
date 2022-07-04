@@ -2,6 +2,8 @@ const router = require('express').Router()
 
 const Plant = require('./../../models/Plant.model')
 
+const { isLoggedIn } = require('./../../middleware/session-guard')
+
 
 router.get('/plants', (req, res, next) => {
 
@@ -13,24 +15,32 @@ router.get('/plants', (req, res, next) => {
         .catch(err => console.log(err))
 })
 
-router.get('/plants/create', (req, res, next) => {
+router.get('/plants/create', isLoggedIn, (req, res, next) => {
 
     res.render('plant/new-plant')
 })
 
-router.post('/plants/create', (req, res, next) => {
+router.post('/plants/create', isLoggedIn, (req, res, next) => {
 
-    const { scientificName, commonName, region, cultures, files, types, description } = req.body
+    const { sName, cName, region, culture, files, properties, description } = req.body
     const createPlant = req.body
 
-    /* Plant
-        .create() */
-
-
-
+    Plant
+        .create(createPlant)
+        .then(res.redirect('/plants'))
+        .catch(err => console.log(err))
 })
 
 router.get('/plants/:id', (req, res, next) => {
+
+    const { plant_id } = req.params
+
+    Plant
+        .findById(plant_id)
+        .then(plant => {
+            res.render('plant/plants-details', plant)
+        })
+        .catch(err => console.log(err))
 
 })
 

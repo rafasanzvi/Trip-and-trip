@@ -18,7 +18,7 @@ const plantSchema = new Schema(
             required: [true, 'You must fill the autoctonous region of the plant.']
         },
 
-        cultures: {
+        culture: {
             type: [String]
         },
 
