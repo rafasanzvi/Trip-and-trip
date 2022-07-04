@@ -1,5 +1,5 @@
 # Trip-and-trip
-
+Plants endpints
 | HTTP Method 	| URI path      	| Description                                    	| JSON 	|
 |-------------	|---------------	|------------------------------------------------	|---------	|
 | GET         	| `/`             	| Index page          	| |
@@ -11,10 +11,15 @@
 | POST         	| `/plants/:id/edit` 	|edits plant 	| |
 | GET         	| `/api/plants` 	| Plants API 	|  ✅|
 | GET         	| `/map` 	| Google Maps with plant area markers 	| |
+
+Auth endpoints
 | GET         	| `/register` 	| renders register form 	| |
 | POST         	| `/register` 	| registers user 	| |
 | GET         	| `/login` 	|renders login form 	| |
 | GET         	| `/login` 	|checks credentials	| |
+| POST         	| `/logout` 	|destroys session	| |
+
+Events endpoints
 | GET         	| `/events` 	| Displays event list 	| |
 | GET         	| `/events/create` 	| renders event form 	| |
 | POST         	| `/events/create` 	| creates event 	| |
@@ -23,6 +28,8 @@
 | POST         	| `/events/:id/edit` 	| Edits evet	| |
 | POST         	| `/events/:id/join` 	| Joins event 	| |
 | POST         	| `/events/:id/delete` 	| Deletes event 	| |
+
+User endpoints
 | GET         	| `/users/list` 	| displays user list 	| |
 | GET         	| `/users/:id` 	| displays user details	| |
 | POST         	| `/users/:id/edit` 	| renders user edit form 	| |
