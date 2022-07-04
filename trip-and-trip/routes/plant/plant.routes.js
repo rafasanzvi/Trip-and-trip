@@ -5,7 +5,6 @@ const { checkRole } = require('./../../middleware/role-checker')
 
 
 
-
 router.get('/plants', isLoggedIn, (req, res, next) => {
 
     Plant
@@ -38,10 +37,7 @@ router.get('/plants/:id', (req, res, next) => {
 
     Plant
         .findById(id)
-        .then(plant => {
-
-            res.render('plant/plants-details', plant)
-        })
+        .then(plant => res.render('plant/plants-details', plant))
         .catch(err => console.log(err))
 
 })
@@ -50,31 +46,40 @@ router.get('/plants/:id/edit', (req, res, next) => {
 
     const { id } = req.params
 
-    /* Plant
+    Plant
         .findById(id)
-        .then(plant => {
-
-        }) */
-
+        .then(plant => res.render('plant/plants-edit', plant))
+        .catch(err => console.log(err))
 })
 
 router.post('/plants/:id/edit', (req, res, next) => {
 
+    const { sName, cName, region, culture, files, properties, description } = req.body
+    const createPlant = { sName, cName, region, culture, files, properties, description }
+    const { id } = req.params
+    console.log(id)
+
+
+    Plant
+        .findByIdAndUpdate(id, createPlant, { new: true })
+        .then(plant => res.render('plant/plants-details', plant))
+        .catch(err => console.log(err))
+
 })
 
-router.post('/plants/:id/delete', (req, res, next) => {
+router.get('/plants/:id/delete', (req, res, next) => {
 
+    const { id } = req.params
+
+    Plant
+        .findByIdAndDelete(id)
+        .then(() => res.redirect('/plants'))
+        .catch(err => console.log(err))
 })
 
 router.get('/api/plants', (req, res, next) => {
 
 })
-
-
-
-
-
-
 
 
 

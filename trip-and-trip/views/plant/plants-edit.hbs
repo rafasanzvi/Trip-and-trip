@@ -1,1 +1,73 @@
-<h2>!!!!!!!!!!!!!!!!!!!!!!!!!</h2>
+<div class="container">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-6">
+
+            <h1>Edit {{cName}}</h1>
+
+            <hr>
+
+            <form action="/plants/{{id}}/edit" method="POST">
+
+                {{!-- Scientific Name --}}
+                <div class="mb-3">
+                    <label for="sName" class="form-label">Scientific name: </label>
+                    <input type="text" class="form-control" id="sName" name="sName" value="{{sName}}">
+                </div>
+
+                {{!-- Common Name --}}
+                <div class="mb-3">
+                    <label for="cName" class="form-label">Common name:</label>
+                    <input type="text" class="form-control" id="cName" name="cName" value="{{cName}}">
+                </div>
+
+                {{!-- Regin Multiple Selector --}}
+
+                <div class="mb-3">
+                    <label for="region" class="form-label">Plants region</label>
+                    <select name="region" class="form-select" multiple>
+                        <option value="Africa">Africa</option>
+                        <option value="America">America</option>
+                        <option value="Europe">Europe</option>
+                        <option value="Asia">Asia</option>
+                        <option value="Oceania">Oceania</option>
+                    </select>
+                </div>
+
+                {{!-- Culture --}}
+                <div class="mb-3">
+                    <label for="culture" class="form-label">Culture:</label>
+                    <input type="text" class="form-control" id="culture" name="culture" value="{{culture}}">
+                </div>
+
+                {{!-- Files --}}
+                {{!-- <div class="mb-3">
+                    <label for="files" class="form-label">Files:</label>
+                    <input type="text" class="form-control" id="files" name="files">
+                </div> --}}
+
+                {{!-- Types --}}
+                <div class="mb-3">
+                    <label for="properties" class="form-label">Plants properties</label>
+                    <select name="properties" class="form-select" multiple>
+                        <option value="Psychedelic">Psychedelic</option>
+                        <option value="Medicinal">Medicinal</option>
+                        <option value="Toxic">Toxic</option>
+                    </select>
+                </div>
+
+                {{!-- Description --}}
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description:</label>
+                    <input type="text" class="form-control" id="description" name="description" value="{{description}}">
+                </div>
+
+                <button type="submit" class="btn btn-dark">Edit plant</button>
+            </form>
+
+        </div>
+    </div>
+
+
+</div>
