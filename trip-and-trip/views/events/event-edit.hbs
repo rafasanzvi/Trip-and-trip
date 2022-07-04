@@ -1,6 +1,6 @@
 <div class="container mt-5">
 
-    <form action="/events/create" method="POST">
+    <form action="/events/{{id}}/edit" method="POST">
 
 
         <div class="mb-3">
@@ -32,7 +32,7 @@
         </div>
 
         <div class="d-grid gap-2">
-            <button type="submit" class="btn btn-dark block">Create</button>
+            <button type="submit" class="btn btn-dark block">Edit</button>
         </div>
 
         {{#if errorMessage}}

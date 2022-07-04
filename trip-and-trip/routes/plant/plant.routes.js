@@ -3,7 +3,7 @@ const Plant = require('./../../models/Plant.model')
 const { isLoggedIn } = require('./../../middleware/session-guard')
 const { checkRole } = require('./../../middleware/role-checker')
 
-const { isLoggedIn } = require('./../../middleware/session-guard')
+
 
 
 router.get('/plants', isLoggedIn, (req, res, next) => {

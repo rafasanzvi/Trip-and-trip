@@ -22,7 +22,7 @@ router.get('/events/create', isLoggedIn, checkRole('CHAMAN', 'HIEROPHANT'), (req
     Plant
         .find()
         .then(plants => {
-            console.log(organizer)
+            console.log(plants)
             res.render('events/event-create', { plants, organizer })
         })
         .catch(err => next(new Error(err)))
@@ -33,49 +33,76 @@ router.post('/events/create', isLoggedIn, checkRole('CHAMAN', 'HIEROPHANT'), (re
     const creator = req.session.currentUser
     const { date, plants, description } = req.body
 
-
-
     Event
         .create({ organizer: creator._id, date, plants, description })
         .then(event => {
-            res.render('events/event-list')
+            res.redirect('/events')
         })
         .catch(err => next(new Error(err)))
 
 
 })
 
-router.get('/events/:id', (req, res, next) => {
+router.get('/events/:id', isLoggedIn, (req, res, next) => {
     const { id } = req.params
 
     Event
         .findById(id)
         .populate('organizer')
+        .populate('plants')
+        .populate('attendees')
         .then(eventData => res.render('events/event-details', eventData))
         .catch(err => next(new Error(err)))
 })
 
-router.get('/events/:id/edit', (req, res, next) => {
+router.get('/events/:id/edit', isLoggedIn, checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
     const { id } = req.params
 
     Event
         .findById(id)
         .populate('organizer')
+        .populate('plants')
         .then(eventEdition => {
-            console.log(eventEdition)
             res.render('events/event-edit', eventEdition)
         })
         .catch(err => next(new Error(err)))
 })
 
-router.post('/events/:id/edit', (req, res, next) => {
+router.post('/events/:id/edit', isLoggedIn, checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
+    const { id } = req.params
+    const { date, plants, description } = req.body
+
+
+    Event
+        .findByIdAndUpdate(id, { date, plants, description })
+        .then(event => {
+            res.redirect('/events')
+        })
+        .catch(err => next(new Error(err)))
 })
 
-router.post('/events/:id/join', (req, res, next) => {
+router.post('/events/:id/join', isLoggedIn, (req, res, next) => {
+    const { id } = req.params
+    const joiner = req.session.currentUser
+
+    Event
+        .findByIdAndUpdate(id, { $push: { attendees: joiner._id } })
+        .then(eventJoined => {
+            console.log(eventJoined)
+            res.redirect('/events')
+        })
+        .catch(err => next(new Error(err)))
 
 })
 
-router.post('/events/:id/delete', (req, res, next) => {
+router.post('/events/:id/delete', checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
+    const { id } = req.params
+
+    Event
+        .findByIdAndDelete(id)
+        .then(() => res.redirect('/events'))
+        .catch(err => next(new Error(err)))
+
 
 })
 
