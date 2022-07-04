@@ -1,6 +1,12 @@
 <div class="container mt-5">
 
     <form action="/events/create" method="POST">
+
+
+        <div class="mb-3">
+            <label for="organizer" class="form-label">Organizer</label>
+            <input type="text" class="form-control" id="organizer" name="organizer" value="{{organizer.username}}">
+        </div>
         <div class="mb-3">
             <label for="date" class="form-label">Date</label>
             <input type="date" class="form-control" id="date" name="date">
@@ -19,7 +25,7 @@
         <div class="mb-3">
             <label for="plants" class="form-label">Plants</label>
             <select name="plants" class="form-select" multiple>
-                {{#each plants}}
+                {{#each plantInfo}}
                 <option value="{{id}}">{{cName}}</option>
                 {{/each}}
             </select>

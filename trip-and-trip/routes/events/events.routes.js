@@ -1,31 +1,39 @@
 const router = require('express').Router()
 const Event = require('./../../models/Event.model')
 const Plant = require('./../../models/Plant.model')
+const User = require('./../../models/User.model')
+const { isLoggedIn } = require('./../../middleware/session-guard')
 
 
 router.get('/events', (req, res, next) => {
     res.render('events/event-list')
 })
 
-router.get('/events/create', (req, res, next) => {
+router.get('/events/create', isLoggedIn, (req, res, next) => {
+    const organizer = req.session.currentUser
     Plant
         .find()
         .then(plants => {
-            console.log(plants)
-            res.render('events/event-create', { plants })
+            console.log(organizer)
+            res.render('events/event-create', { plants, organizer })
         })
         .catch((err) => console.log(err))
 
 })
 
-router.post('/events/create', (req, res, next) => {
-    // const { id } = req.session.currentUser._id
+router.post('/events/create', isLoggedIn, (req, res, next) => {
+    const organizer = req.session.currentUser._id
     const { date, plants, description } = req.body
+    console.log(organizer)
 
-    Event
-        .create({ date, plants, description })
-        .then(event => res.send(event))
-        .catch((err) => console.log(err))
+
+    // Event
+    //     .create({ date, plants, description })
+
+    //     .then(event => {
+    //         res.send(event)
+    //     })
+    //     .catch((err) => console.log(err))
 
 
 })
