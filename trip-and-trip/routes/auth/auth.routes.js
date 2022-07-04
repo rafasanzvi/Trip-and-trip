@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const bcrypt = require('bcryptjs')
 
-const User = require('./../../models/user.model')
+const User = require('./../../models/User.model')
 const saltRounds = 10
 
 
@@ -54,6 +54,7 @@ router.post('/login', (req, res, next) => {
 
 
 router.post('/logout', (req, res, next) => {
+    req.session.destroy(() => res.redirect('/login'))
 
 })
 

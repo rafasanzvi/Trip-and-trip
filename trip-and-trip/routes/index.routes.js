@@ -8,4 +8,7 @@ router.get("/", (req, res, next) => {
 const authRouter = require('./auth/auth.routes')
 router.use('/', authRouter)
 
+const eventRouter = require('./events/events.routes')
+router.use('/', eventRouter)
+
 module.exports = router;

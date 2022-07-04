@@ -5,13 +5,13 @@ const userSchema = new Schema(
     email: {
       type: String,
       unique: true,
-      required: true
+      required: [true, 'Email is required.']
     },
 
     username: {
       type: String,
       unique: true,
-      required: true
+      required: [true, 'Username is required.']
     },
 
     password: {
@@ -20,7 +20,7 @@ const userSchema = new Schema(
 
     role: {
       type: String,
-      enum: ['INITIATE', 'CHAMAN', 'PRIMARCH'],
+      enum: ['INITIATE', 'CHAMAN', 'HIEROPHANT'],
       default: 'INITIATE'
     },
 

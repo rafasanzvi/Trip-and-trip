@@ -24,17 +24,29 @@
                <li class="nav-item">
                   <a class="nav-link" href="/">Home</a>
                </li>
-               <li class="nav-item">
-                  <a class="nav-link" href="/register">Register</a>
+               <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                     data-bs-toggle="dropdown" aria-expanded="false">Auth</a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                     <li><a class="dropdown-item" href="/register">Register</a></li>
+                     <li><a class="dropdown-item" href="/login">Log in</a></li>
+                     <li>
+                        <form action="/logout" method="POST">
+                           <input class="dropdown-item" type="submit" value="Logout">
+                        </form>
+                     </li>
+                  </ul>
                </li>
-               <li class="nav-item">
-                  <a class="nav-link" href="/login">Log in</a>
+
+               <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                     data-bs-toggle="dropdown" aria-expanded="false">Events</a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                     <li><a class="dropdown-item" href="/events">List</a></li>
+                     <li><a class="dropdown-item" href="/events/create">Create event</a></li>
+                  </ul>
                </li>
-               <li class="nav-item">
-                  <form action="/logout" method="POST">
-                     <button class="nav-link">Logout</button>
-                  </form>
-               </li>
+
          </div>
       </div>
    </nav>
