@@ -6,24 +6,35 @@ const eventSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
+
     date: {
         type: Date
     },
+
     location: {
         type: {
             type: String,
         },
         coordinates: [Number]
     },
+
     plants: [{
         type: Schema.Types.ObjectId,
         ref: 'Plant'
     }],
-    description: String,
+
+    description: {
+        type: String
+    },
+
     attendees: [{
         type: Schema.Types.ObjectId,
         ref: 'User'
-    }]
+    }],
+
+    imageUrl: {
+        type: String
+    },
 
 })
 

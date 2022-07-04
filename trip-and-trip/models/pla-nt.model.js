@@ -2,15 +2,20 @@ const { Schema, model } = require("mongoose");
 
 const plantSchema = new Schema(
     {
-        sname: String,
-
-        cname: {
+        sName: {
             type: String,
+            required: true
+        },
+
+        cName: {
+            type: String,
+            required: true
         },
 
         region: {
             type: [String],
-            enum: ["Africa", "America", "Europe", "Asia", "Oceania"]
+            enum: ["Africa", "America", "Europe", "Asia", "Oceania"],
+            required: true
         },
 
         cultures: {
@@ -19,16 +24,19 @@ const plantSchema = new Schema(
 
         //area:
 
-        file: {
+        files: {
             type: [String]
         },
 
-        type: {
+        types: {
             type: [String],
-            enum: ["Psychedelic", "Medicinal", "Toxic"]
+            enum: ["Psychedelic", "Medicinal", "Toxic"],
+            required: true
         },
 
-        description: String,
+        description: {
+            type: String
+        },
 
     }
 )

@@ -46,7 +46,6 @@ router.post('/login', (req, res, next) => {
             } else {
                 req.session.currentUser = user
                 res.redirect('/')
-
             }
         })
         .catch(error => next(error))

@@ -14,16 +14,36 @@ const userSchema = new Schema(
       required: true
     },
 
-    password: String,
+    password: {
+      type: String
+    },
 
     role: {
       type: String,
       enum: ['Iniciado', 'Chaman', 'Gran Hechicero'],
       default: 'Iniciado'
+    },
+
+    interests: {
+      type: String
+    },
+
+    dateOfBirth: {
+      type: Date
+    },
+
+    avatar: {
+      type: String
+    },
+
+    plantsOfInterest: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Plant'
+    }],
+
+    purpose: {
+      type: String
     }
-    //     interests: {
-    // type: [String]
-    //     }
 
   },
   {

@@ -15,6 +15,7 @@
 | POST         	| `/register` 	| registers user 	| |
 | GET         	| `/login` 	|renders login form 	| |
 | GET         	| `/login` 	|checks credentials	| |
+| POST        	| `/logout` 	|destroys session	| |
 | GET         	| `/events` 	| Displays event list 	| |
 | GET         	| `/events/create` 	| renders event form 	| |
 | POST         	| `/events/create` 	| creates event 	| |
