@@ -23,8 +23,9 @@ router.post('/plants/create', (req, res, next) => {
     const { scientificName, commonName, region, cultures, files, types, description } = req.body
     const createPlant = req.body
 
-    Plant
-        .create()
+    /* Plant
+        .create() */
+
 
 
 })
