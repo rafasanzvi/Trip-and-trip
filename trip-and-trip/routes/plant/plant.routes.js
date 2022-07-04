@@ -33,11 +33,12 @@ router.post('/plants/create', isLoggedIn, (req, res, next) => {
 
 router.get('/plants/:id', (req, res, next) => {
 
-    const { plant_id } = req.params
+    const { id } = req.params
 
     Plant
-        .findById(plant_id)
+        .findById(id)
         .then(plant => {
+
             res.render('plant/plants-details', plant)
         })
         .catch(err => console.log(err))
@@ -45,6 +46,14 @@ router.get('/plants/:id', (req, res, next) => {
 })
 
 router.get('/plants/:id/edit', (req, res, next) => {
+
+    const { id } = req.params
+
+    /* Plant
+        .findById(id)
+        .then(plant => {
+
+        }) */
 
 })
 
