@@ -46,12 +46,26 @@ router.post('/events/create', isLoggedIn, checkRole('CHAMAN', 'HIEROPHANT'), (re
 })
 
 router.get('/events/:id', (req, res, next) => {
-})
+    const { id } = req.params
 
-router.post('/events/:id', (req, res, next) => {
+    Event
+        .findById(id)
+        .populate('organizer')
+        .then(eventData => res.render('events/event-details', eventData))
+        .catch(err => next(new Error(err)))
 })
 
 router.get('/events/:id/edit', (req, res, next) => {
+    const { id } = req.params
+
+    Event
+        .findById(id)
+        .populate('organizer')
+        .then(eventEdition => {
+            console.log(eventEdition)
+            res.render('events/event-edit', eventEdition)
+        })
+        .catch(err => next(new Error(err)))
 })
 
 router.post('/events/:id/edit', (req, res, next) => {
