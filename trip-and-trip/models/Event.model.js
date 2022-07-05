@@ -33,7 +33,7 @@ const eventSchema = new Schema({
     }],
 
     imageURL: {
-        type: String
+        type: [String]
     },
 
     location: {

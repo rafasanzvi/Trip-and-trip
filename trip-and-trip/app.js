@@ -3,17 +3,11 @@ require("dotenv/config")
 require("./db")
 
 const express = require("express")
-
-const hbs = require("hbs")
-
 const app = express()
 
 require("./config")(app)
 
-const capitalized = require("./utils/capitalized")
-const projectName = "trip-and-trip"
-
-app.locals.appTitle = `${capitalized(projectName)}`
+app.locals.appTitle = `WHATEVER`
 
 require('./config/session.config')(app)
 

@@ -6,13 +6,14 @@ const saltRounds = 10
 
 
 router.get('/register', (req, res, next) => {
+
     res.render('auth/auth-register')
 })
 
 
 router.post('/register', (req, res, next) => {
-    const { userPwd } = req.body
 
+    const { userPwd } = req.body
 
     bcrypt
         .genSalt(saltRounds)
@@ -26,7 +27,6 @@ router.post('/register', (req, res, next) => {
 router.get('/login', (req, res, next) => {
 
     res.render('auth/auth-login')
-
 })
 
 
@@ -57,8 +57,5 @@ router.post('/logout', (req, res, next) => {
     req.session.destroy(() => res.redirect('/login'))
 
 })
-
-
-
 
 module.exports = router
