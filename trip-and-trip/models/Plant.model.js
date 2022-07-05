@@ -28,6 +28,10 @@ const plantSchema = new Schema(
             type: [String]
         },
 
+        imageURL: {
+            type: [String]
+        },
+
         properties: {
             type: [String],
             enum: ["Psychedelic", "Medicinal", "Toxic"],

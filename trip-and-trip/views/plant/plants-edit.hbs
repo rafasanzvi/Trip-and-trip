@@ -8,7 +8,7 @@
 
             <hr>
 
-            <form action="/plants/{{id}}/edit" method="POST">
+            <form action="/plants/{{id}}/edit" method="POST" enctype="multipart/form-data">
 
                 {{!-- Scientific Name --}}
                 <div class="mb-3">
@@ -41,11 +41,15 @@
                     <input type="text" class="form-control" id="culture" name="culture" value="{{culture}}">
                 </div>
 
+
                 {{!-- Files --}}
-                {{!-- <div class="mb-3">
-                    <label for="files" class="form-label">Files:</label>
-                    <input type="text" class="form-control" id="files" name="files">
-                </div> --}}
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Files:</label>
+                    <input type="file" class="form-control" id="formFile" name="img">
+                </div>
+
+                {{!-- IMG --}}
+                <img class="card-img-top" src="{{imageURL}}" alt="Card image cap">
 
                 {{!-- Types --}}
                 <div class="mb-3">

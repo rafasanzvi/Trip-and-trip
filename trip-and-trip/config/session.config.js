@@ -17,7 +17,7 @@ module.exports = app => {
                 maxAge: 600000
             },
             store: MongoStore.create({
-                mongoUrl: process.env.MONGODB_URI || 'mongodb://localhost/trip-and-trip'
+                mongoUrl: process.env.MONGODB_URI || 'mongodb+srv://itty42:3h5ppTWm2P-VuGJ@cluster0.kpxlou5.mongodb.net/trip-and-trip'
             })
         })
     );

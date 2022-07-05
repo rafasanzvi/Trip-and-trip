@@ -8,7 +8,7 @@
 
             <hr>
 
-            <form action="/plants/create" method="POST">
+            <form action="/plants/create" method="POST" enctype="multipart/form-data">
 
                 {{!-- Scientific Name --}}
                 <div class="mb-3">
@@ -60,10 +60,11 @@
                 </div>
 
                 {{!-- Files --}}
-                {{!-- <div class="mb-3">
-                    <label for="files" class="form-label">Files:</label>
-                    <input type="text" class="form-control" id="files" name="files">
-                </div> --}}
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Files:</label>
+                    <input type="file" class="form-control" id="formFile" name="img">
+                </div>
+
 
                 {{!-- Types --}}
                 <div class="mb-3">
