@@ -8,19 +8,21 @@ const { checkRole } = require('./../../middleware/role-checker')
 const uploaderConfig = require('./../../config/uploader.config')
 
 
-router.get('/events', isLoggedIn, (req, res, next) => {
+router.get('', isLoggedIn, (req, res, next) => {
     Event
         .find()
         .populate('organizer')
+        .select({ organizer: 1, description: 1, date: 1 })
         .then(events => res.render('events/event-list', { events }))
         .catch(err => next(new Error(err)))
 
 })
 
-router.get('/events/create', isLoggedIn, checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
+router.get('/create', isLoggedIn, checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
     const organizer = req.session.currentUser
     Plant
         .find()
+        .select({ cName: 1 })
         .then(plants => {
             res.render('events/event-create', { plants, organizer })
         })
@@ -28,7 +30,7 @@ router.get('/events/create', isLoggedIn, checkRole('CHAMAN', 'HIEROPHANT'), (req
 
 })
 
-router.post('/events/create', isLoggedIn, uploaderConfig.single('img'), checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
+router.post('/create', isLoggedIn, uploaderConfig.single('img'), checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
     const { currentUser } = req.session
     const { date, plants, description, latitude, longitude } = req.body
 
@@ -47,7 +49,7 @@ router.post('/events/create', isLoggedIn, uploaderConfig.single('img'), checkRol
         .catch(err => next(new Error(err)))
 })
 
-router.get('/events/:id', isLoggedIn, (req, res, next) => {
+router.get('/:id', isLoggedIn, (req, res, next) => {
 
     const { id } = req.params
 
@@ -58,7 +60,7 @@ router.get('/events/:id', isLoggedIn, (req, res, next) => {
         .catch(err => next(new Error(err)))
 })
 
-router.get('/events/:id/edit', isLoggedIn, checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
+router.get('/:id/edit', isLoggedIn, checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
 
     const { id } = req.params
 
@@ -80,7 +82,7 @@ router.get('/events/:id/edit', isLoggedIn, checkRole('CHAMAN', 'HIEROPHANT'), (r
 
 
 
-router.post('/events/:id/edit', isLoggedIn, uploaderConfig.single('img'), checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
+router.post('/:id/edit', isLoggedIn, uploaderConfig.single('img'), checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
 
     const { id } = req.params
     const { date, plants, description, latitude, longitude } = req.body
@@ -107,7 +109,7 @@ router.post('/events/:id/edit', isLoggedIn, uploaderConfig.single('img'), checkR
         .catch(err => next(new Error(err)))
 })
 
-router.post('/events/:id/join', isLoggedIn, (req, res, next) => {
+router.post('/:id/join', isLoggedIn, (req, res, next) => {
 
     const { id } = req.params
     const { currentUser } = req.session
@@ -121,7 +123,7 @@ router.post('/events/:id/join', isLoggedIn, (req, res, next) => {
 
 })
 
-router.post('/events/:id/delete', checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
+router.post('/:id/delete', checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
 
     const { id } = req.params
 

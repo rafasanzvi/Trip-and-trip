@@ -10,6 +10,7 @@ router.get('/plants', isLoggedIn, (req, res, next) => {
 
     Plant
         .find()
+        .select({ cName: 1, sName: 1, region: 1, imageURL: 1 })
         .then(plants => {
             res.render('plant/plants-list', { plants })
         })

@@ -10,7 +10,7 @@ const mapRouter = require('./map/map.routes')
 router.use('/', mapRouter)
 
 const eventRouter = require('./events/events.routes')
-router.use('/', eventRouter)
+router.use('/events', eventRouter)
 
 const plantRouter = require('./plant/plant.routes')
 router.use('/', plantRouter)
