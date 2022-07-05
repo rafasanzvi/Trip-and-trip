@@ -6,7 +6,7 @@ const uploaderConfig = require('./../../config/uploader.config')
 
 
 
-router.get('/plants', isLoggedIn, (req, res, next) => {
+router.get('/', isLoggedIn, (req, res, next) => {
 
     Plant
         .find()
@@ -17,12 +17,12 @@ router.get('/plants', isLoggedIn, (req, res, next) => {
         .catch(err => console.log(err))
 })
 
-router.get('/plants/create', isLoggedIn, checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
+router.get('/create', isLoggedIn, checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
 
     res.render('plant/new-plant')
 })
 
-router.post('/plants/create', isLoggedIn, uploaderConfig.single('img'), checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
+router.post('/create', isLoggedIn, uploaderConfig.single('img'), checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
 
     const { sName, cName, region, culture, properties, description } = req.body
 
@@ -34,7 +34,7 @@ router.post('/plants/create', isLoggedIn, uploaderConfig.single('img'), checkRol
         .catch(err => console.log(err))
 })
 
-router.get('/plants/:id', isLoggedIn, (req, res, next) => {
+router.get('/:id', isLoggedIn, (req, res, next) => {
 
     const { id } = req.params
 
@@ -45,7 +45,7 @@ router.get('/plants/:id', isLoggedIn, (req, res, next) => {
 
 })
 
-router.get('/plants/:id/edit', isLoggedIn, checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
+router.get('/:id/edit', isLoggedIn, checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
 
     const { id } = req.params
 
@@ -55,7 +55,7 @@ router.get('/plants/:id/edit', isLoggedIn, checkRole('CHAMAN', 'HIEROPHANT'), (r
         .catch(err => console.log(err))
 })
 
-router.post('/plants/:id/edit', isLoggedIn, uploaderConfig.single('img'), checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
+router.post('/:id/edit', isLoggedIn, uploaderConfig.single('img'), checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
 
     const { sName, cName, region, culture, files, properties, description } = req.body
 
@@ -74,7 +74,7 @@ router.post('/plants/:id/edit', isLoggedIn, uploaderConfig.single('img'), checkR
 
 })
 
-router.get('/plants/:id/delete', checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
+router.get('/:id/delete', checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
 
     const { id } = req.params
 

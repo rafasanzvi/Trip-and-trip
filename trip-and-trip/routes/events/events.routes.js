@@ -8,7 +8,7 @@ const { checkRole } = require('./../../middleware/role-checker')
 const uploaderConfig = require('./../../config/uploader.config')
 
 
-router.get('', isLoggedIn, (req, res, next) => {
+router.get('/', isLoggedIn, (req, res, next) => {
     Event
         .find()
         .populate('organizer')
