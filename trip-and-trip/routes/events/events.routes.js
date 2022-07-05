@@ -32,6 +32,7 @@ router.get('/events/create', isLoggedIn, checkRole('CHAMAN', 'HIEROPHANT'), (req
 router.post('/events/create', isLoggedIn, checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
     const creator = req.session.currentUser
     const { date, plants, description } = req.body
+    console.log(plants)
 
     Event
         .create({ organizer: creator._id, date, plants, description })
