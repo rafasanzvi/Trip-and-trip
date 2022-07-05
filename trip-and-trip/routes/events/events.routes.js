@@ -8,7 +8,7 @@ const { checkRole } = require('./../../middleware/role-checker')
 const uploaderConfig = require('./../../config/uploader.config')
 
 
-router.get('', isLoggedIn, (req, res, next) => {
+router.get('/', isLoggedIn, (req, res, next) => {
     Event
         .find()
         .populate('organizer')
@@ -47,6 +47,11 @@ router.post('/create', isLoggedIn, uploaderConfig.single('img'), checkRole('CHAM
             res.redirect('/events')
         })
         .catch(err => next(new Error(err)))
+})
+
+router.get("/map", (req, res, next) => {
+
+    res.render("map/place-map")
 })
 
 router.get('/:id', isLoggedIn, (req, res, next) => {
@@ -132,5 +137,7 @@ router.post('/:id/delete', checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) =
         .then(() => res.redirect('/events'))
         .catch(err => next(new Error(err)))
 })
+
+
 
 module.exports = router

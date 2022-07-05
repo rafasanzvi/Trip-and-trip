@@ -3,7 +3,6 @@ const startingPoint = {
     lng: 42
 }
 
-
 function renderMap() {
 
     new google.maps.Map(
@@ -14,7 +13,4 @@ function renderMap() {
 
         }
     )
-
-
-
 }
