@@ -56,9 +56,7 @@ router.get('/events/:id', isLoggedIn, (req, res, next) => {
 
     Event
         .findById(id)
-        .populate('organizer')
-        .populate('plants')
-        .populate('attendees')
+        .populate('organizer plants attendees')
         .then(eventData => res.render('events/event-details', eventData))
         .catch(err => next(new Error(err)))
 })
