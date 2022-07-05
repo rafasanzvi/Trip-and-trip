@@ -2,6 +2,8 @@ const router = require('express').Router()
 const Plant = require('./../../models/Plant.model')
 const { isLoggedIn } = require('./../../middleware/session-guard')
 const { checkRole } = require('./../../middleware/role-checker')
+//Cloudinary
+const uploaderConfig = require('./../../config/uploader.config')
 
 
 
@@ -20,14 +22,17 @@ router.get('/plants/create', isLoggedIn, checkRole('CHAMAN', 'HIEROPHANT'), (req
     res.render('plant/new-plant')
 })
 
-router.post('/plants/create', isLoggedIn, checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
+router.post('/plants/create', isLoggedIn, uploaderConfig.single('img'), checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
 
-    const { sName, cName, region, culture, files, properties, description } = req.body
-    const createPlant = req.body
+    const { sName, cName, region, culture, properties, description } = req.body
+
 
     Plant
-        .create(createPlant)
-        .then(res.redirect('/plants'))
+        .create({ sName, cName, region, culture, properties, description, imageURL: req.file.path })
+        .then(plant => {
+            console.log(plant)
+            res.redirect('/plants')
+        })
         .catch(err => console.log(err))
 })
 
