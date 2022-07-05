@@ -5,7 +5,7 @@ const { checkRole } = require('./../../middleware/role-checker')
 const uploaderConfig = require('./../../config/uploader.config')
 
 
-router.get('/list', (req, res, next) => {
+router.get('/list', isLoggedIn, (req, res, next) => {
     User
         .find()
         .select({ username: 1, role: 1 })
@@ -15,29 +15,42 @@ router.get('/list', (req, res, next) => {
         .catch(err => console.log(err))
 })
 
-router.get('/:id/edit', (req, res, next) => {
+router.get('/:id/edit', isLoggedIn, (req, res, next) => {
+
     const { id } = req.params
 
     User
-        .findById(id)
-        .then(userData => res.render('user/user-edit'))
+        .findById(id).populate('plantsOfInterest')
+        .then(userData => res.render('user/user-edit', userData))
         .catch(err => console.log(err))
 })
 
 
-router.post('/:id/edit', (req, res, next) => {
+router.post('/:id/edit', isLoggedIn, uploaderConfig.single('avatar'), (req, res, next) => {
 
-    /* const { email, username, interests, dateOfBirth, avatar, plantsOfInterest, purpose } */
+    const { email, username, interests, dateOfBirth, plantsOfInterest, purpose } = req.body
+
+    let query = { email, username, interests, dateOfBirth, plantsOfInterest, purpose }
+
+    if (req.file) {
+        query = { ...query, $push: { avatar: req.file.path } }
+    }
+
+    const { id } = req.params
+
+    User
+        .findByIdAndUpdate(id, query, { new: true })
+        .then(() => res.redirect('/users/:id'))
+        .catch(err => console.log(err))
+
 
 })
 
 
-router.get('/:id', (req, res, next) => {
-
+///////CONTINUE
+router.get('/:id', isLoggedIn, (req, res, next) => {
+    res.send('No arriesgo')
 })
-
-
-
 
 
 
