@@ -8,53 +8,53 @@
 
             <hr>
 
-            <form action="/" method="POST">
+            <form action="/users/{{id}}/edit" method="POST" enctype="multipart/form-data">
 
                 {{!-- EMAIL --}}
                 <div class="mb-3">
                     <label for="email" class="form-label">Email: </label>
-                    <input type="email" class="form-control" id="email" name="email">
+                    <input type="email" class="form-control" id="email" name="email" value="{{email}}">
                 </div>
 
                 {{!-- USERNAME --}}
                 <div class="mb-3">
                     <label for="username" class="form-label">Username:</label>
-                    <input type="text" class="form-control" id="username" name="username">
+                    <input type="text" class="form-control" id="username" name="username" value="{{username}}">
                 </div>
-
 
                 {{!-- INTEREST --}}
                 <div class="mb-3">
                     <label for="interests" class="form-label">Interests:</label>
-                    <input type="interests" class="form-control" id="interests" name="interests">
+                    <input type="interests" class="form-control" id="interests" name="interests" value="{{interests}}">
                 </div>
 
                 {{!-- BIRTH --}}
                 <div class="mb-3">
                     <label for="date" class="form-label">Date of birth:</label>
-                    <input type="date" class="form-control" id="date" name="date">
+                    <input type="date" class="form-control" id="date" name="date" value="{{dateOfBirth}}">
                 </div>
 
                 {{!-- AVATAR --}}
                 <div class="mb-3">
-                    <label for="avatar" class="form-label">Avatar:</label>
-                    <input type="text" class="form-control" id="avatar" name="avatar">
+                    <label for="formFile" class="form-label">Avatar</label>
+                    <input class="form-control" type="file" id="formFile" name="avatar">
                 </div>
 
 
                 {{!-- PLANTS OF INTERESTS --}}
                 <div class="mb-3">
                     <label for="interestPlant" class="form-label">Plant of interests:</label>
-                    <input type="text" class="form-control" id="interestPlant" name="interestPlant">
+                    <input type="text" class="form-control" id="interestPlant" name="interestPlant"
+                        value="{{plantsOfInterest}}">
                 </div>
 
                 {{!-- PURPOSE --}}
                 <div class="mb-3">
                     <label for="purpose" class="form-label">Purpose:</label>
-                    <input type="text" class="form-control" id="purpose" name="purpose">
+                    <input type="text" class="form-control" id="purpose" name="purpose" value="{{purpose}}">
                 </div>
 
-                <button type="submit" class="btn btn-dark">Edit plant</button>
+                <button type="submit" class="btn btn-dark">Edit user</button>
             </form>
 
         </div>
