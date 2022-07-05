@@ -57,12 +57,12 @@ router.get('/plants/:id/edit', isLoggedIn, checkRole('CHAMAN', 'HIEROPHANT'), (r
         .catch(err => console.log(err))
 })
 
-router.post('/plants/:id/edit', isLoggedIn, checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
+router.post('/plants/:id/edit', isLoggedIn, uploaderConfig.single('img'), checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
 
     const { sName, cName, region, culture, files, properties, description } = req.body
-    const createPlant = { sName, cName, region, culture, files, properties, description }
+    const createPlant = { sName, cName, region, culture, files, properties, description, imageURL: req.file.path }
     const { id } = req.params
-    console.log(id)
+    console.log(createPlant)
 
 
     Plant
