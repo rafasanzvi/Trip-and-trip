@@ -38,16 +38,11 @@ router.post('/events/create', isLoggedIn, uploaderConfig.single('img'), checkRol
         type: 'Point',
         coordinates: [latitude, longitude]
     }
-
-    let createEvent
-    if (req.file) {
-        createEvent = { organizer: creator._id, date, plants, description, location, $push: { imageURL: req.file.path } }
-    } else {
-        createEvent = { organizer: creator._id, date, plants, description, location }
-    }
+    const editEvent = { organizer: creator._id, date, plants, description, location, imageURL: req.file.path }
+    console.log(editEvent)
 
     Event
-        .create(createEvent)
+        .create(editEvent)
         .then(event => {
             res.redirect('/events')
         })
@@ -73,35 +68,35 @@ router.get('/events/:id/edit', isLoggedIn, checkRole('CHAMAN', 'HIEROPHANT'), (r
 
     Event
         .findById(id)
-        .populate('organizer')
-        .populate('plants')
+        .populate('organizer plants')
         .then(eventEdition => {
             console.log(eventEdition)
-            res.render('events/event-edit', eventEdition)
+            Plant
+                .find()
+                .then(plantsData => {
+                    const allInfo = { eventEdition, plantsData }
+                    return allInfo
+
+                })
+                .then(data => {
+                    res.render('events/event-edit', data)
+                })
         })
         .catch(err => next(new Error(err)))
 })
 
-router.post('/events/:id/edit', isLoggedIn, uploaderConfig.single('img'), checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
+router.post('/events/:id/edit', isLoggedIn, checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
     const { id } = req.params
-    const creator = req.session.currentUser
     const { date, plants, description, latitude, longitude } = req.body
 
     const location = {
         type: 'Point',
         coordinates: [latitude, longitude]
     }
-
-    let editEvent
-    if (req.file) {
-        editEvent = { organizer: creator._id, date, plants, description, location, $push: { imageURL: req.file.path } }
-    } else {
-        editEvent = { organizer: creator._id, date, plants, description, location }
-    }
-
+    const newEvent = { date, plants, description, location }
 
     Event
-        .findByIdAndUpdate(id, editEvent)
+        .findByIdAndUpdate(id, newEvent)
         .then(event => {
             console.log(event)
             res.redirect('/events')
