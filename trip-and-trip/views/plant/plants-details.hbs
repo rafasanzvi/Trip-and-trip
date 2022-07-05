@@ -2,12 +2,23 @@
     <h1>{{cName}}</h1>
 
     <hr>
-
+    <img class="card-img-top" src="{{imageURL}}" alt="Card image cap">
+    <hr>
     <p>Scientific name: {{sName}}</p>
-    <p>Region: {{region}}</p>
     <p>Culture: {{culture}}</p>
+    <p>Regions:</p>
+    <ul>
+        {{#each region}}
+        <li class="list-group-item">{{this}}</li>
+        {{/each}}
+    </ul>
     {{!-- <p>Files: {{files}}</p> --}}
-    <p>Properties: {{properties}}</p>
+    <p>Properties:</p>
+    <ul>
+        {{#each properties}}
+        <li class="list-group-item">{{this}}</li>
+        {{/each}}
+    </ul>
     <p>Description: {{description}}</p>
 
     <hr>
