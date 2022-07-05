@@ -27,27 +27,20 @@
             <input type="text" class="form-control" id="longitude" name="longitude"
                 value="{{location.coordinates.[1]}}">
         </div>
-        {{!-- <div class="mb-3">
+
+        <div class="mb-3">
             <label for="formFile" class="form-label">Image</label>
-            <input class="form-control" type="file" id="formFile" name="picture">
-        </div> --}}
+            <input class="form-control" type="file" id="formFile" name="img">
+        </div>
 
 
-        {{#each plants}}
+        {{#each plantsData}}
         <div class="form-check">
             <input class="form-check-input" type="checkbox" value="{{id}}" id="flexCheckDefault" name="plants" />
             <label class="form-check-label" for="flexCheckDefault">{{cName}}</label>
         </div>
         {{/each}}
 
-        <div class="mb-3">
-            <label for="plants" class="form-label">Plants</label>
-            <select name="plants" class="form-select" multiple>
-                {{#each plants}}
-                <option value="{{id}}">{{cName}}</option>
-                {{/each}}
-            </select>
-        </div>
 
         <div class="d-grid gap-2">
             <button type="submit" class="btn btn-dark block">Edit</button>
