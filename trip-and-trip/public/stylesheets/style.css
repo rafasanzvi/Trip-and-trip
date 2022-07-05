@@ -16,3 +16,8 @@ h1 {
   background: transparent;
   border: none;
 }
+
+#myMap {
+  height: 500px;
+
+}
