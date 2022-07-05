@@ -1,11 +1,12 @@
 <div class="container mt-5">
 
-    <form action="/events/{{id}}/edit" method="POST">
+    <form action="/events/{{eventEdition.id}}/edit" method="POST" enctype="multipart/form-data">
 
 
         <div class="mb-3">
             <label for="organizer" class="form-label">Organizer</label>
-            <input type="text" class="form-control" id="organizer" name="organizer" value="{{organizer.username}}">
+            <input type="text" class="form-control" id="organizer" name="organizer"
+                value="{{eventEdition.organizer.username}}">
         </div>
         <div class="mb-3">
             <label for="date" class="form-label">Date</label>
@@ -14,18 +15,20 @@
 
         <div class="mb-3">
             <label for="description" class="form-label">Description</label>
-            <input type="text" class="form-control" id="description" name="description" value="{{description}}">
+            <input type="text" class="form-control" id="description" name="description"
+                value="{{eventEdition.description}}">
         </div>
 
         <div class="mb-3">
             <label for="latitude" class="form-label">Latitude</label>
-            <input type="text" class="form-control" id="latitude" name="latitude" value="{{location.coordinates.[0]}}">
+            <input type="text" class="form-control" id="latitude" name="latitude"
+                value="{{eventEdition.location.coordinates.[0]}}">
         </div>
 
         <div class="mb-3">
             <label for="longitude" class="form-label">Longitude</label>
             <input type="text" class="form-control" id="longitude" name="longitude"
-                value="{{location.coordinates.[1]}}">
+                value="{{eventEdition.location.coordinates.[1]}}">
         </div>
 
         <div class="mb-3">
