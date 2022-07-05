@@ -23,17 +23,35 @@
                 </div>
 
                 {{!-- Regin Multiple Selector --}}
-
                 <div class="mb-3">
-                    <label for="region" class="form-label">Plants region</label>
-                    <select name="region" class="form-select" multiple>
-                        <option value="Africa">Africa</option>
-                        <option value="America">America</option>
-                        <option value="Europe">Europe</option>
-                        <option value="Asia">Asia</option>
-                        <option value="Oceania">Oceania</option>
-                    </select>
+                    <p>Region:</p>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="Africa" id="flexCheckDefault"
+                            name="region" />
+                        <label class="form-check-label" for="flexCheckDefault">Africa</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="America" id="flexCheckDefault"
+                            name="region" />
+                        <label class="form-check-label" for="flexCheckDefault">America</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="Asia" id="flexCheckDefault"
+                            name="region" />
+                        <label class="form-check-label" for="flexCheckDefault">Asia</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="Europe" id="flexCheckDefault"
+                            name="region" />
+                        <label class="form-check-label" for="flexCheckDefault">Europe</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="Oceania" id="flexCheckDefault"
+                            name="region" />
+                        <label class="form-check-label" for="flexCheckDefault">Oceania</label>
+                    </div>
                 </div>
+
 
                 {{!-- Culture --}}
                 <div class="mb-3">
@@ -49,13 +67,26 @@
 
                 {{!-- Types --}}
                 <div class="mb-3">
-                    <label for="properties" class="form-label">Plants properties</label>
-                    <select name="properties" class="form-select" multiple>
-                        <option value="Psychedelic">Psychedelic</option>
-                        <option value="Medicinal">Medicinal</option>
-                        <option value="Toxic">Toxic</option>
-                    </select>
+                    <p>Properties:</p>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="Psychedelic" id="flexCheckDefault"
+                            name="properties" />
+                        <label class="form-check-label" for="flexCheckDefault">Psychedelic</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="Medicinal" id="flexCheckDefault"
+                            name="properties" />
+                        <label class="form-check-label" for="flexCheckDefault">Medicinal</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="Toxic" id="flexCheckDefault"
+                            name="properties" />
+                        <label class="form-check-label" for="flexCheckDefault">Toxic</label>
+                    </div>
                 </div>
+
+
+
 
                 {{!-- Description --}}
                 <div class="mb-3">
