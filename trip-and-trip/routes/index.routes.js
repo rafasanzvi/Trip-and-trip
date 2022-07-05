@@ -13,7 +13,10 @@ const eventRouter = require('./events/events.routes')
 router.use('/events', eventRouter)
 
 const plantRouter = require('./plant/plant.routes')
-router.use('/', plantRouter)
+router.use('/plants', plantRouter)
+
+const userRouter = require('./users/user.routes')
+router.use('/users', userRouter)
 
 const apiRouter = require('./api/api.routes')
 router.use('/api', apiRouter)

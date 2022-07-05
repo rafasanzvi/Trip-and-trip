@@ -1,0 +1,64 @@
+<div class="container">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-6">
+
+            <h1>User profile</h1>
+
+            <hr>
+
+            <form action="/" method="POST">
+
+                {{!-- EMAIL --}}
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email: </label>
+                    <input type="email" class="form-control" id="email" name="email">
+                </div>
+
+                {{!-- USERNAME --}}
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username:</label>
+                    <input type="text" class="form-control" id="username" name="username">
+                </div>
+
+
+                {{!-- INTEREST --}}
+                <div class="mb-3">
+                    <label for="interests" class="form-label">Interests:</label>
+                    <input type="interests" class="form-control" id="interests" name="interests">
+                </div>
+
+                {{!-- BIRTH --}}
+                <div class="mb-3">
+                    <label for="date" class="form-label">Date of birth:</label>
+                    <input type="date" class="form-control" id="date" name="date">
+                </div>
+
+                {{!-- AVATAR --}}
+                <div class="mb-3">
+                    <label for="avatar" class="form-label">Avatar:</label>
+                    <input type="text" class="form-control" id="avatar" name="avatar">
+                </div>
+
+
+                {{!-- PLANTS OF INTERESTS --}}
+                <div class="mb-3">
+                    <label for="interestPlant" class="form-label">Plant of interests:</label>
+                    <input type="text" class="form-control" id="interestPlant" name="interestPlant">
+                </div>
+
+                {{!-- PURPOSE --}}
+                <div class="mb-3">
+                    <label for="purpose" class="form-label">Purpose:</label>
+                    <input type="text" class="form-control" id="purpose" name="purpose">
+                </div>
+
+                <button type="submit" class="btn btn-dark">Edit plant</button>
+            </form>
+
+        </div>
+    </div>
+
+
+</div>
