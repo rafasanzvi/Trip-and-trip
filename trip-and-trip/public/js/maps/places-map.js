@@ -21,10 +21,7 @@ function getPlacesFromDB() {
 
     axios
         .get('/api/events')
-        .then(response => {
-            console.log(response)
-            printMarkers(response.data)
-        })
+        .then(response => printMarkers(response.data))
         .catch(err => console.log(err))
 
 }
