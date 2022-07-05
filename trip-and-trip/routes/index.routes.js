@@ -7,12 +7,16 @@ const authRouter = require('./auth/auth.routes')
 router.use('/', authRouter)
 
 const mapRouter = require('./map/map.routes')
-router.use('/', mapRouter)
+router.use('/maps', mapRouter)
 
 const eventRouter = require('./events/events.routes')
 router.use('/events', eventRouter)
 
 const plantRouter = require('./plant/plant.routes')
 router.use('/', plantRouter)
+
+const apiRouter = require('./api/api.routes')
+router.use('/api', apiRouter)
+
 
 module.exports = router
