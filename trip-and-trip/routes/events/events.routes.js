@@ -76,9 +76,9 @@ router.get('/events/:id/edit', isLoggedIn, checkRole('CHAMAN', 'HIEROPHANT'), (r
                     return allInfo
 
                 })
-                .then(data => {
-                    res.render('events/event-edit', data)
-                })
+        })
+        .then(data => {
+            res.render('events/event-edit', data)
         })
         .catch(err => next(new Error(err)))
 })
