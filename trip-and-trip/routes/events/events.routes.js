@@ -3,9 +3,10 @@ const router = require('express').Router()
 const Event = require('./../../models/Event.model')
 const Plant = require('./../../models/Plant.model')
 const User = require('./../../models/User.model')
-
 const { isLoggedIn } = require('./../../middleware/session-guard')
 const { checkRole } = require('./../../middleware/role-checker')
+//Cloudinary
+const uploaderConfig = require('./../../config/uploader.config')
 
 
 router.get('/events', isLoggedIn, (req, res, next) => {
@@ -29,7 +30,7 @@ router.get('/events/create', isLoggedIn, checkRole('CHAMAN', 'HIEROPHANT'), (req
 
 })
 
-router.post('/events/create', isLoggedIn, checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
+router.post('/events/create', isLoggedIn, uploaderConfig.single('img'), checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
     const creator = req.session.currentUser
     const { date, plants, description, latitude, longitude } = req.body
 
@@ -37,10 +38,11 @@ router.post('/events/create', isLoggedIn, checkRole('CHAMAN', 'HIEROPHANT'), (re
         type: 'Point',
         coordinates: [latitude, longitude]
     }
-    console.log(plants)
+    const editEvent = { organizer: creator._id, date, plants, description, location, imageURL: req.file.path }
+    console.log(editEvent)
 
     Event
-        .create({ organizer: creator._id, date, plants, description, location })
+        .create(editEvent)
         .then(event => {
             res.redirect('/events')
         })

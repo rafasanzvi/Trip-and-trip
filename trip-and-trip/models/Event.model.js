@@ -32,9 +32,10 @@ const eventSchema = new Schema({
         ref: 'User'
     }],
 
-    imageUrl: {
+    imageURL: {
         type: String
     },
+
     location: {
         type: {
             type: String
