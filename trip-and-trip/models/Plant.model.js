@@ -22,8 +22,6 @@ const plantSchema = new Schema(
             type: [String]
         },
 
-        //area:
-
         files: {
             type: [String]
         },

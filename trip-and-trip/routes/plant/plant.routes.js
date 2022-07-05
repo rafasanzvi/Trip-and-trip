@@ -60,7 +60,13 @@ router.get('/plants/:id/edit', isLoggedIn, checkRole('CHAMAN', 'HIEROPHANT'), (r
 router.post('/plants/:id/edit', isLoggedIn, uploaderConfig.single('img'), checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
 
     const { sName, cName, region, culture, files, properties, description } = req.body
-    const createPlant = { sName, cName, region, culture, files, properties, description, imageURL: req.file.path }
+    let createPlant
+    if (req.file) {
+        createPlant = { sName, cName, region, culture, files, properties, description, $push: { imageURL: req.file.path } }
+    } else {
+        createPlant = createPlant = { sName, cName, region, culture, files, properties, description }
+    }
+
     const { id } = req.params
     console.log(createPlant)
 
