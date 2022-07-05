@@ -3,7 +3,7 @@ const MongoStore = require('connect-mongo')
 const mongoose = require('mongoose')
 
 module.exports = app => {
-    app.set('trust proxy', 1);
+    app.set('trust proxy', 1)
 
     app.use(
         session({
@@ -17,7 +17,7 @@ module.exports = app => {
                 maxAge: 600000
             },
             store: MongoStore.create({
-                mongoUrl: process.env.MONGODB_URI || 'mongodb://localhost/trip-and-trip'
+                mongoUrl: process.env.MONGODB_URI || 'mongodb+srv://itty42:3h5ppTWm2P-VuGJ@cluster0.kpxlou5.mongodb.net/trip-and-trip'
             })
         })
     );

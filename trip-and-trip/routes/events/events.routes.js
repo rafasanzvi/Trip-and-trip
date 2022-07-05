@@ -31,11 +31,16 @@ router.get('/events/create', isLoggedIn, checkRole('CHAMAN', 'HIEROPHANT'), (req
 
 router.post('/events/create', isLoggedIn, checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
     const creator = req.session.currentUser
-    const { date, plants, description } = req.body
+    const { date, plants, description, latitude, longitude } = req.body
+
+    const location = {
+        type: 'Point',
+        coordinates: [latitude, longitude]
+    }
     console.log(plants)
 
     Event
-        .create({ organizer: creator._id, date, plants, description })
+        .create({ organizer: creator._id, date, plants, description, location })
         .then(event => {
             res.redirect('/events')
         })
@@ -64,6 +69,7 @@ router.get('/events/:id/edit', isLoggedIn, checkRole('CHAMAN', 'HIEROPHANT'), (r
         .populate('organizer')
         .populate('plants')
         .then(eventEdition => {
+            console.log(eventEdition)
             res.render('events/event-edit', eventEdition)
         })
         .catch(err => next(new Error(err)))
@@ -71,12 +77,18 @@ router.get('/events/:id/edit', isLoggedIn, checkRole('CHAMAN', 'HIEROPHANT'), (r
 
 router.post('/events/:id/edit', isLoggedIn, checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
     const { id } = req.params
-    const { date, plants, description } = req.body
+    const { date, plants, description, latitude, longitude } = req.body
 
+    const location = {
+        type: 'Point',
+        coordinates: [latitude, longitude]
+    }
+    const newEvent = { date, plants, description, location }
 
     Event
-        .findByIdAndUpdate(id, { date, plants, description })
+        .findByIdAndUpdate(id, newEvent)
         .then(event => {
+            console.log(event)
             res.redirect('/events')
         })
         .catch(err => next(new Error(err)))
