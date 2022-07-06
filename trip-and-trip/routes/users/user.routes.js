@@ -8,8 +8,11 @@ const { checkRole } = require('./../../middleware/role-checker')
 const { checkOwnerOrHIEROPHANT } = require('./../../middleware/is-owner')
 const { rolesChecker } = require("./../../utils/roles-checker");
 
+// const { formatDate } = require("./../../utils/format-date")
+// const date = { formatDate }
+
 const uploaderConfig = require('./../../config/uploader.config')
-const { findById } = require('./../../models/Plant.model')
+
 
 
 router.get('/list', isLoggedIn, (req, res, next) => {
@@ -53,6 +56,8 @@ router.post('/:id/edit', isLoggedIn, checkOwnerOrHIEROPHANT, uploaderConfig.sing
 
     let query = { email, username, interests, dateOfBirth, plantsOfInterest, purpose }
 
+    //let date
+
     if (req.file) {
         query = { ...query, $push: { avatar: req.file.path } }
     }
@@ -74,6 +79,7 @@ router.get('/:id', isLoggedIn, (req, res, next) => {
 
     User
         .findById(id)
+        .populate('plantsOfInterest')
         .then(users => {
             console.log(users)
             res.render('user/user-details', users)

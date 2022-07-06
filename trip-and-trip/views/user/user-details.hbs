@@ -5,5 +5,15 @@
     <hr>
     <img class="card-img-top" src="{{avatar.[0]}}" alt="Card image cap">
     <hr>
+    <p>Interest: {{interests}}</p>
+    <p>Date of birth: {{dateOfBirth}}</p>
+    <p>Purpose: {{purpose}}</p>
+
+    <p>Plants of interest:</p>
+    <ul>
+        {{#each plantsOfInterest}}
+        <li>{{cName}}</li>
+        {{/each}}
+    </ul>
 
 </div>

@@ -31,8 +31,9 @@
 
                 {{!-- BIRTH --}}
                 <div class="mb-3">
-                    <label for="date" class="form-label">Date of birth:</label>
-                    <input type="date" class="form-control" id="date" name="date" value="{{userData.dateOfBirth}}">
+                    <label for="dateOfBirth" class="form-label">Date of birth:</label>
+                    <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth"
+                        value="{{userData.dateOfBirth}}">
                 </div>
 
                 {{!-- AVATAR --}}
@@ -43,7 +44,6 @@
 
 
                 {{!-- PLANTS OF INTERESTS --}}
-
                 {{#each plantsData}}
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="{{id}}" id="flexCheckDefault"
