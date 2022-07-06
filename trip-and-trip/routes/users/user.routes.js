@@ -9,9 +9,11 @@ const { checkOwnerOrHIEROPHANT } = require('./../../middleware/is-owner')
 const { rolesChecker } = require("./../../utils/roles-checker");
 
 const uploaderConfig = require('./../../config/uploader.config')
+const { findById } = require('./../../models/Plant.model')
 
 
 router.get('/list', isLoggedIn, (req, res, next) => {
+
     const roles = rolesChecker(req.session.currentUser)
 
     User
@@ -24,9 +26,7 @@ router.get('/list', isLoggedIn, (req, res, next) => {
         .catch(err => console.log(err))
 })
 
-router.get('/:id', isLoggedIn, (req, res, next) => {
-    res.send('No arriesgo')
-})
+
 
 router.get('/:id/edit', isLoggedIn, checkOwnerOrHIEROPHANT, (req, res, next) => {
 
@@ -40,9 +40,6 @@ router.get('/:id/edit', isLoggedIn, checkOwnerOrHIEROPHANT, (req, res, next) => 
     Promise
         .all(promises)
         .then(([userData, plantsData]) => {
-
-            console.log({ userData, plantsData })
-
             res.render('user/user-edit', { userData, plantsData })
         })
         .catch(err => next(new Error(err)))
@@ -64,16 +61,27 @@ router.post('/:id/edit', isLoggedIn, checkOwnerOrHIEROPHANT, uploaderConfig.sing
 
     User
         .findByIdAndUpdate(id, query, { new: true })
-        .then(() => res.redirect('/users/:id'))
+        .populate('plantsOfInterest')
+        .then(user => res.redirect('/users/list'))
         .catch(err => console.log(err))
 
 
 })
 
+router.get('/:id', isLoggedIn, (req, res, next) => {
+
+    const { id } = req.params
+
+    User
+        .findById(id)
+        .then(users => {
+            console.log(users)
+            res.render('user/user-details', users)
+        })
+        .catch(err => console.log(err))
 
 
-
-
+})
 
 
 
