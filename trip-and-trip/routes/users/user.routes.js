@@ -64,7 +64,7 @@ router.post('/:id/edit', isLoggedIn, checkOwnerOrHIEROPHANT, uploaderConfig.sing
 
     User
         .findByIdAndUpdate(id, query, { new: true })
-        .then(() => res.redirect('/users/:id'))
+        .then(() => res.redirect(`/users/${id}`))
         .catch(err => console.log(err))
 
 
