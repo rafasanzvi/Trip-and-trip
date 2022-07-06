@@ -5,15 +5,21 @@ const User = require('./../../models/User.model')
 
 const { isLoggedIn } = require('./../../middleware/session-guard')
 const { checkRole } = require('./../../middleware/role-checker')
+const { checkOwnerOrHIEROPHANT } = require('./../../middleware/is-owner')
+const { rolesChecker } = require("./../../utils/roles-checker");
+
 const uploaderConfig = require('./../../config/uploader.config')
 
 
 router.get('/list', isLoggedIn, (req, res, next) => {
+    const roles = rolesChecker(req.session.currentUser)
+
     User
         .find()
         .select({ username: 1, role: 1 })
         .then(users => {
-            res.render('user/user-list', { users })
+            console.log(roles)
+            res.render('user/user-list', { users, roles })
         })
         .catch(err => console.log(err))
 })
@@ -22,7 +28,7 @@ router.get('/:id', isLoggedIn, (req, res, next) => {
     res.send('No arriesgo')
 })
 
-router.get('/:id/edit', isLoggedIn, (req, res, next) => {
+router.get('/:id/edit', isLoggedIn, checkOwnerOrHIEROPHANT, (req, res, next) => {
 
     const { id } = req.params
 
@@ -44,7 +50,7 @@ router.get('/:id/edit', isLoggedIn, (req, res, next) => {
 
 })
 
-router.post('/:id/edit', isLoggedIn, uploaderConfig.single('avatar'), (req, res, next) => {
+router.post('/:id/edit', isLoggedIn, checkOwnerOrHIEROPHANT, uploaderConfig.single('avatar'), (req, res, next) => {
 
     const { email, username, interests, dateOfBirth, plantsOfInterest, purpose } = req.body
 

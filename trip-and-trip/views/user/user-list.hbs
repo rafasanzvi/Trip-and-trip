@@ -14,12 +14,24 @@
 
 
                     <a href="/users/{{id}}" class="btn btn-success btn-sm">Details</a>
+
+
+                    {{#if ../roles.isHIEROPHANT}}
+
                     <a href="/users/{{id}}/edit" class="btn btn-warning btn-sm">Edit</a>
+
+                    <hr>
+                    <form action="/users/makeCHAMAN/{{studentData.id}}" method="POST" style="display: inline-block">
+                        <input type="submit" value="Set as CHAMAN" class="btn btn-info btn-sm">
+                    </form>
+
+                    {{/if}}
 
                 </div>
             </div>
 
         </div>
+
         {{/each}}
     </div>
 </div>
