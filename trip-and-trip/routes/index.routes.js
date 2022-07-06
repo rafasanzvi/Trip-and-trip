@@ -6,6 +6,9 @@ router.use('/', baseRouter)
 const authRouter = require('./auth/auth.routes')
 router.use('/', authRouter)
 
+const adminRouter = require('./admin/admin.routes')
+router.use('/admin', adminRouter)
+
 const mapRouter = require('./map/map.routes')
 router.use('/maps', mapRouter)
 

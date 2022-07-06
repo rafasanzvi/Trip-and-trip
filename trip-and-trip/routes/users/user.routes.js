@@ -2,6 +2,7 @@ const router = require('express').Router()
 
 const Plant = require('./../../models/Plant.model')
 const User = require('./../../models/User.model')
+const Comment = require('./../../models/Comment.model')
 
 const { isLoggedIn } = require('./../../middleware/session-guard')
 const { checkRole } = require('./../../middleware/role-checker')
@@ -9,7 +10,7 @@ const { checkOwnerOrHIEROPHANT } = require('./../../middleware/is-owner')
 const { rolesChecker } = require("./../../utils/roles-checker");
 
 const uploaderConfig = require('./../../config/uploader.config')
-const { findById } = require('./../../models/Plant.model')
+
 
 
 router.get('/list', isLoggedIn, (req, res, next) => {
@@ -20,7 +21,6 @@ router.get('/list', isLoggedIn, (req, res, next) => {
         .find()
         .select({ username: 1, role: 1 })
         .then(users => {
-            console.log(roles)
             res.render('user/user-list', { users, roles })
         })
         .catch(err => console.log(err))
@@ -72,12 +72,49 @@ router.get('/:id', isLoggedIn, (req, res, next) => {
 
     const { id } = req.params
 
-    User
-        .findById(id)
-        .then(users => {
-            console.log(users)
-            res.render('user/user-details', users)
+    const promises = [
+        User.findById(id).populate('plantsOfInterest comments'),
+        Comment.find().populate('commenter')
+    ]
+
+    Promise
+        .all(promises)
+        .then(([userData, commentData]) => {
+            res.render('user/user-details', { userData, commentData })
         })
+        .catch(err => next(new Error(err)))
+
+
+    // User
+    //     .findById(id)
+    //     .populate('comments')
+    //     .then(users => {
+    //         Comment.
+    //             find().populate()
+    //     })
+    //     .then(commentsData => {
+    //         console.log(commentsData)
+    //         res.render('user/user-details', { users, commentsData })
+    //     })
+    //     .catch(err => console.log(err))
+
+
+})
+
+router.post('/:id/comment', isLoggedIn, (req, res, next) => {
+
+    const { currentUser } = req.session
+    const { id } = req.params
+    const { content } = req.body
+
+    const editComment = { commenter: currentUser._id, content }
+
+    Comment
+        .create(editComment)
+        .then(comment =>
+            User.findByIdAndUpdate(id, { $push: { comments: comment } })
+                .populate('comments'))
+        .then(() => res.redirect(`/users/${id}`))
         .catch(err => console.log(err))
 
 

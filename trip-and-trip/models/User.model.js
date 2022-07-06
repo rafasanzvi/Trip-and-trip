@@ -43,6 +43,12 @@ const userSchema = new Schema(
 
     purpose: {
       type: String
+    },
+    comments: {
+      type: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Comment'
+      }]
     }
 
   },
