@@ -1,7 +1,12 @@
 const router = require('express').Router()
+const mongoose = require('mongoose')
+
 const Plant = require('./../../models/Plant.model')
+
 const { isLoggedIn } = require('./../../middleware/session-guard')
 const { checkRole } = require('./../../middleware/role-checker')
+
+const { formatErrorMessage } = require("./../../utils/format-error-message")
 const uploaderConfig = require('./../../config/uploader.config')
 
 
@@ -26,12 +31,24 @@ router.post('/create', isLoggedIn, uploaderConfig.single('img'), checkRole('CHAM
 
     const { sName, cName, region, culture, properties, description } = req.body
 
+    let query = { sName, cName, region, culture, properties, description }
+
+    if (req.file) {
+        query = { ...query, $push: { imageURL: req.file.path } }
+    }
+
     Plant
-        .create({ sName, cName, region, culture, properties, description, imageURL: req.file.path })
+        .create({ query })
         .then(() => {
             res.redirect('/plants')
         })
-        .catch(err => console.log(err))
+        .catch(error => {
+            if (error instanceof mongoose.Error.ValidationError) {
+                res.render('plant/new-plant', { errorMessage: formatErrorMessage(error) })
+            } else {
+                next(new Error(error))
+            }
+        })
 })
 
 router.get('/:id', isLoggedIn, (req, res, next) => {
@@ -70,7 +87,13 @@ router.post('/:id/edit', isLoggedIn, uploaderConfig.single('img'), checkRole('CH
     Plant
         .findByIdAndUpdate(id, query, { new: true })
         .then(plant => res.render('plant/plants-details', plant))
-        .catch(err => console.log(err))
+        .catch(error => {
+            if (error instanceof mongoose.Error.ValidationError) {
+                res.render('validated-form', { errorMessage: formatErrorMessage(error) })
+            } else {
+                next(new Error(error))
+            }
+        })
 
 })
 

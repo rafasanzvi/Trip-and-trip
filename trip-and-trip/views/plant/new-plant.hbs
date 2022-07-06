@@ -92,7 +92,9 @@
 
                 <button type="submit" class="btn btn-dark">Create plant</button>
             </form>
-
+            {{#if errorMessage}}
+            <div id="error">{{{errorMessage}}}</div>
+            {{/if}}
         </div>
     </div>
 

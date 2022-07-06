@@ -19,7 +19,8 @@ const plantSchema = new Schema(
         },
 
         culture: {
-            type: [String]
+            type: [String],
+            required: [true, 'You must fill the cultures that used the plant.']
         },
 
         files: {
@@ -37,7 +38,8 @@ const plantSchema = new Schema(
         },
 
         description: {
-            type: String
+            type: String,
+            required: [true, 'You must fill the description of the plant.']
         },
 
     },

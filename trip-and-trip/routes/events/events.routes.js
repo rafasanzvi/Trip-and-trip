@@ -1,10 +1,14 @@
 const router = require('express').Router()
+const mongoose = require('mongoose')
 
 const Event = require('./../../models/Event.model')
 const Plant = require('./../../models/Plant.model')
 const User = require('./../../models/User.model')
+
 const { isLoggedIn } = require('./../../middleware/session-guard')
 const { checkRole } = require('./../../middleware/role-checker')
+
+const { formatErrorMessage } = require("./../../utils/format-error-message")
 const uploaderConfig = require('./../../config/uploader.config')
 
 
@@ -20,6 +24,7 @@ router.get('/', isLoggedIn, (req, res, next) => {
 
 router.get('/create', isLoggedIn, checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
     const organizer = req.session.currentUser
+
     Plant
         .find()
         .select({ cName: 1 })
@@ -35,18 +40,32 @@ router.post('/create', isLoggedIn, uploaderConfig.single('img'), checkRole('CHAM
     const { date, plants, description, latitude, longitude } = req.body
 
     const location = {
+
         type: 'Point',
         coordinates: [latitude, longitude]
     }
 
-    const editEvent = { organizer: currentUser._id, date, plants, description, location, imageURL: req.file.path }
+    let query = { date, plants, description, location }
+
+    if (req.file) {
+        query = { ...query, $push: { imageURL: req.file.path } }
+    }
+
+
+    const editEvent = { ...query, organizer: currentUser._id }
 
     Event
         .create(editEvent)
         .then(() => {
             res.redirect('/events')
         })
-        .catch(err => next(new Error(err)))
+        .catch(error => {
+            if (error instanceof mongoose.Error.ValidationError) {
+                res.render('events/event-create', { errorMessage: formatErrorMessage(error) })
+            } else {
+                next(new Error(error))
+            }
+        })
 })
 
 router.get("/map", (req, res, next) => {
@@ -111,7 +130,13 @@ router.post('/:id/edit', isLoggedIn, uploaderConfig.single('img'), checkRole('CH
         .then(() => {
             res.redirect(`/events/${id}`)
         })
-        .catch(err => next(new Error(err)))
+        .catch(error => {
+            if (error instanceof mongoose.Error.ValidationError) {
+                res.render('validated-form', { errorMessage: formatErrorMessage(error) })
+            } else {
+                next(new Error(error))
+            }
+        })
 })
 
 router.post('/:id/join', isLoggedIn, (req, res, next) => {

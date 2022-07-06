@@ -8,7 +8,8 @@ const eventSchema = new Schema({
     },
 
     date: {
-        type: Date
+        type: Date,
+        required: [true, 'You must fill the date']
     },
 
     location: {
@@ -24,7 +25,8 @@ const eventSchema = new Schema({
     }],
 
     description: {
-        type: String
+        type: String,
+        required: [true, 'You must fill the description of the event.']
     },
 
     attendees: [{

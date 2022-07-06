@@ -9,8 +9,8 @@ const { checkRole } = require('./../../middleware/role-checker')
 const { checkOwnerOrHIEROPHANT } = require('./../../middleware/is-owner')
 const { rolesChecker } = require("./../../utils/roles-checker");
 
-// const { formatDate } = require("./../../utils/format-date")
-// const date = { formatDate }
+const { formatDate } = require("./../../utils/format-date")
+const date = { formatDate }
 
 const uploaderConfig = require('./../../config/uploader.config')
 
@@ -101,9 +101,7 @@ router.post('/:id/comment', isLoggedIn, (req, res, next) => {
 
     Comment
         .create(editComment)
-        .then(comment =>
-            User.findByIdAndUpdate(id, { $push: { comments: comment } })
-                .populate('comments'))
+        .then(comment => User.findByIdAndUpdate(id, { $push: { comments: comment._id } }).populate('comments'))
         .then(() => res.redirect(`/users/${id}`))
         .catch(err => console.log(err))
 

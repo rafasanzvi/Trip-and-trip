@@ -22,10 +22,13 @@ h1 {
 
 }
 
-#myMap2 {
+#error {
   background-color: red;
-  height: 500px;
-
+  color: white;
+  text-align: center;
+  padding: 5px;
+  font-weight: 800;
+  margin-top: 20px;
 }
 
 img {
