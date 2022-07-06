@@ -21,27 +21,20 @@ router.get('/', isLoggedIn, (req, res, next) => {
         .populate('organizer')
         .select({ organizer: 1, description: 1, date: 1 })
         .then(eventsData => {
-            res.render('events/event-list', { eventsData })
-            // let formattedDate
-            // let newDates = [...eventsData]
-
-            // eventsData.forEach(elem => {
-            //     formattedDate = formatDate(elem.date)
-            //     newDates[elem](formattedDate)
-            //     let formattedElemData = { ...elem._doc, date: formattedDate }
-            //     console.log(newDates)
 
 
-            // })
-            // console.log(eventsData)
+            let newDates = []
 
-            // console.log("---------------------------------", formattedDate)
+            eventsData.forEach(elem => {
 
-            // let formattedEventData = { ...eventsData._doc, date: formattedDate }
+                let formattedDate = formatDate(elem.date)
+                let formattedElemData = { ...elem._doc, date: formattedDate }
+                console.log({ ...elem })
+                newDates.push(formattedElemData)
 
-            // console.log("---------------------------------", formattedEventData)
+            })
 
-            // res.render('events/event-list', { eventsData: formattedEventData })
+            res.render('events/event-list', { newDates })
         })
         .catch(err => next(new Error(err)))
 
