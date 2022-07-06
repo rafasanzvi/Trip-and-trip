@@ -8,9 +8,8 @@ const { isLoggedIn } = require('./../../middleware/session-guard')
 const { checkRole } = require('./../../middleware/role-checker')
 const { checkOwnerOrHIEROPHANT } = require('./../../middleware/is-owner')
 const { rolesChecker } = require("./../../utils/roles-checker");
-
 const { formatDate } = require("./../../utils/format-date")
-const date = { formatDate }
+
 
 const uploaderConfig = require('./../../config/uploader.config')
 
@@ -56,7 +55,6 @@ router.post('/:id/edit', isLoggedIn, checkOwnerOrHIEROPHANT, uploaderConfig.sing
 
     let query = { email, username, interests, dateOfBirth, plantsOfInterest, purpose }
 
-    //let date
 
     if (req.file) {
         query = { ...query, $push: { avatar: req.file.path } }
@@ -85,7 +83,16 @@ router.get('/:id', isLoggedIn, (req, res, next) => {
     Promise
         .all(promises)
         .then(([userData, commentData]) => {
-            res.render('user/user-details', { userData, commentData })
+
+            const formattedDate = formatDate(userData.dateOfBirth)
+
+            console.log('---esto es userData-', userData)
+
+            let formattedUserData = { ...userData._doc, dateOfBirth: formattedDate }
+
+            console.log('----esto es aux ****', formattedUserData)
+
+            res.render('user/user-details', { userData: formattedUserData, commentData })
         })
         .catch(err => next(new Error(err)))
 
