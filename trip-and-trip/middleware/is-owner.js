@@ -6,7 +6,7 @@ const checkOwnerOrHIEROPHANT = (req, res, next) => {
     if (isOwner || isHIEROPHANT) {
         next()
     } else {
-        res.render('auth/login', { errorMessage: 'You lack enlightenment to see this view' })
+        res.render('auth/login', { errorMessage: 'You lack enlightenment to see this view.' })
     }
 }
 

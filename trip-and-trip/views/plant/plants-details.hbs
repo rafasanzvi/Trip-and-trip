@@ -1,27 +1,34 @@
 <div class="container">
 
     <h1>{{cName}}</h1>
-
     <hr>
+
     <img class="card-img-top" src="{{imageURL}}" alt="Card image cap">
     <hr>
+
     <p>Scientific name: {{sName}}</p>
+
     <p>Culture: {{culture}}</p>
+
     <p>Regions:</p>
+
     <ul>
         {{#each region}}
         <li class="list-group-item">{{this}}</li>
         {{/each}}
     </ul>
-    {{!-- <p>Files: {{files}}</p> --}}
+
     <p>Properties:</p>
+
     <ul>
         {{#each properties}}
         <li class="list-group-item">{{this}}</li>
         {{/each}}
     </ul>
-    <p>Description: {{description}}</p>
 
+    <p>Description: {{description}}</p>
     <hr>
+
     <a href="/plants" class="btn btn-dark">Go back</a>
+
 </div>

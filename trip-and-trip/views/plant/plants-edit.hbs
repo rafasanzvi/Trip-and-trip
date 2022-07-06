@@ -5,26 +5,24 @@
         <div class="col-md-6">
 
             <h1>Edit {{cName}}</h1>
-
             <hr>
 
             <form action="/plants/{{id}}/edit" method="POST" enctype="multipart/form-data">
 
-                {{!-- Scientific Name --}}
                 <div class="mb-3">
                     <label for="sName" class="form-label">Scientific name: </label>
                     <input type="text" class="form-control" id="sName" name="sName" value="{{sName}}">
                 </div>
 
-                {{!-- Common Name --}}
                 <div class="mb-3">
                     <label for="cName" class="form-label">Common name:</label>
                     <input type="text" class="form-control" id="cName" name="cName" value="{{cName}}">
                 </div>
 
-                {{!-- Regin Multiple Selector --}}
                 <div class="mb-3">
+
                     <p>Region:</p>
+
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="Africa" id="flexCheckDefault"
                             name="region" />
@@ -50,23 +48,23 @@
                             name="region" />
                         <label class="form-check-label" for="flexCheckDefault">Oceania</label>
                     </div>
+
                 </div>
 
-                {{!-- Culture --}}
                 <div class="mb-3">
                     <label for="culture" class="form-label">Culture:</label>
                     <input type="text" class="form-control" id="culture" name="culture" value="{{culture}}">
                 </div>
 
-                {{!-- Files --}}
                 <div class="mb-3">
                     <label for="formFile" class="form-label">Files:</label>
                     <input type="file" class="form-control" id="formFile" name="img">
                 </div>
 
-                {{!-- Properties --}}
                 <div class="mb-3">
+
                     <p>Properties:</p>
+
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="Psychedelic" id="flexCheckDefault"
                             name="properties" />
@@ -82,19 +80,20 @@
                             name="properties" />
                         <label class="form-check-label" for="flexCheckDefault">Toxic</label>
                     </div>
+
                 </div>
 
-                {{!-- Description --}}
                 <div class="mb-3">
                     <label for="description" class="form-label">Description:</label>
                     <input type="text" class="form-control" id="description" name="description" value="{{description}}">
                 </div>
 
                 <button type="submit" class="btn btn-dark">Edit plant</button>
+
             </form>
 
         </div>
-    </div>
 
+    </div>
 
 </div>

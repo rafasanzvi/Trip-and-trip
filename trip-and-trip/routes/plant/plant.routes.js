@@ -16,15 +16,15 @@ router.get('/', isLoggedIn, (req, res, next) => {
     Plant
         .find()
         .select({ cName: 1, sName: 1, region: 1, imageURL: 1 })
-        .then(plants => {
-            res.render('plant/plants-list', { plants })
-        })
+        .then(plants => res.render('plant/plants-list', { plants }))
         .catch(err => console.log(err))
+
 })
 
 router.get('/create', isLoggedIn, checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
 
     res.render('plant/new-plant')
+
 })
 
 router.post('/create', isLoggedIn, uploaderConfig.single('img'), checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
@@ -49,6 +49,7 @@ router.post('/create', isLoggedIn, uploaderConfig.single('img'), checkRole('CHAM
                 next(new Error(error))
             }
         })
+
 })
 
 router.get('/:id', isLoggedIn, (req, res, next) => {
@@ -70,6 +71,7 @@ router.get('/:id/edit', isLoggedIn, checkRole('CHAMAN', 'HIEROPHANT'), (req, res
         .findById(id)
         .then(plant => res.render('plant/plants-edit', plant))
         .catch(err => console.log(err))
+
 })
 
 router.post('/:id/edit', isLoggedIn, uploaderConfig.single('img'), checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
@@ -105,9 +107,6 @@ router.get('/:id/delete', checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) =>
         .findByIdAndDelete(id)
         .then(() => res.redirect('/plants'))
         .catch(err => console.log(err))
-})
-
-router.get('/api/plants', (req, res, next) => {
 
 })
 

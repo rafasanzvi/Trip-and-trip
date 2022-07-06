@@ -1,7 +1,11 @@
 const router = require('express').Router()
 const bcrypt = require('bcryptjs')
+const mongoose = require('mongoose')
+
 
 const User = require('./../../models/User.model')
+
+const { formatErrorMessage } = require("./../../utils/format-error-message")
 const saltRounds = 10
 
 
@@ -20,7 +24,13 @@ router.post('/register', (req, res, next) => {
         .then(salt => bcrypt.hash(userPwd, salt))
         .then(hashedPassword => User.create({ ...req.body, password: hashedPassword }))
         .then(createdUser => res.redirect('/'))
-        .catch(error => next(error))
+        .catch(error => {
+            if (error instanceof mongoose.Error.ValidationError) {
+                res.render('auth/auth-register', { errorMessage: formatErrorMessage(error) })
+            } else {
+                next(new Error(error))
+            }
+        })
 })
 
 

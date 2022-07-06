@@ -2,7 +2,6 @@
 
     <form action="/events/{{eventEdition.id}}/edit" method="POST" enctype="multipart/form-data">
 
-
         <div class="mb-3">
             <label for="organizer" class="form-label">Organizer</label>
             <input type="text" class="form-control" id="organizer" name="organizer"
@@ -36,15 +35,12 @@
             <input class="form-control" type="file" id="formFile" name="img">
         </div>
 
-
         {{#each plantsData}}
         <div class="form-check">
             <input class="form-check-input" type="checkbox" value="{{id}}" id="flexCheckDefault" name="plants" />
             <label class="form-check-label" for="flexCheckDefault">{{cName}}</label>
         </div>
         {{/each}}
-
-
 
         <div class="d-grid gap-2">
             <button type="submit" class="btn btn-dark block">Edit</button>
@@ -53,8 +49,7 @@
         {{#if errorMessage}}
         <div id="error">{{{errorMessage}}}</div>
         {{/if}}
+
     </form>
-
-
 
 </div>

@@ -1,10 +1,12 @@
 const router = require('express').Router()
+
 const Plant = require('./../../models/Plant.model')
 const User = require('./../../models/User.model')
 const Comment = require('./../../models/Comment.model')
+
 const { isLoggedIn } = require('./../../middleware/session-guard')
-const { checkRole } = require('./../../middleware/role-checker')
 const { checkOwnerOrHIEROPHANT } = require('./../../middleware/is-owner')
+
 const { rolesChecker } = require("./../../utils/roles-checker");
 const { formatDate } = require("./../../utils/format-date")
 const uploaderConfig = require('./../../config/uploader.config')
@@ -18,10 +20,9 @@ router.get('/list', isLoggedIn, (req, res, next) => {
     User
         .find()
         .select({ username: 1, role: 1 })
-        .then(users => {
-            res.render('user/user-list', { users, roles })
-        })
+        .then(users => res.render('user/user-list', { users, roles }))
         .catch(err => console.log(err))
+
 })
 
 
@@ -37,11 +38,8 @@ router.get('/:id/edit', isLoggedIn, checkOwnerOrHIEROPHANT, (req, res, next) => 
 
     Promise
         .all(promises)
-        .then(([userData, plantsData]) => {
-            res.render('user/user-edit', { userData, plantsData })
-        })
+        .then(([userData, plantsData]) => res.render('user/user-edit', { userData, plantsData }))
         .catch(err => next(new Error(err)))
-
 
 })
 
@@ -61,9 +59,8 @@ router.post('/:id/edit', isLoggedIn, checkOwnerOrHIEROPHANT, uploaderConfig.sing
     User
         .findByIdAndUpdate(id, query, { new: true })
         .populate('plantsOfInterest')
-        .then(user => res.redirect(`/users/${id}`))
+        .then(() => res.redirect(`/users/${id}`))
         .catch(err => console.log(err))
-
 
 })
 
@@ -79,9 +76,7 @@ router.get('/:id', isLoggedIn, (req, res, next) => {
     Promise
         .all(promises)
         .then(([userData, commentData]) => {
-
             const formattedDate = formatDate(userData.dateOfBirth)
-
             let formattedUserData = { ...userData._doc, dateOfBirth: formattedDate }
 
             res.render('user/user-details', { userData: formattedUserData, commentData })
@@ -95,9 +90,7 @@ router.post('/:id/comment', isLoggedIn, (req, res, next) => {
     const { currentUser } = req.session
     const { id } = req.params
     const { content } = req.body
-
     const editComment = { commenter: currentUser._id, content }
-    console.log(editComment)
 
     Comment
         .create(editComment)
@@ -105,8 +98,6 @@ router.post('/:id/comment', isLoggedIn, (req, res, next) => {
         .then(() => res.redirect(`/users/${id}`))
         .catch(err => console.log(err))
 
-
 })
-
 
 module.exports = router

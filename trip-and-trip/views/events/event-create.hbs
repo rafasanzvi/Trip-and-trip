@@ -2,7 +2,6 @@
 
     <form action="/events/create" method="POST" enctype="multipart/form-data">
 
-
         <div class="mb-3">
             <label for="organizer" class="form-label">Organizer</label>
             <input type="text" class="form-control" id="organizer" name="organizer" value="{{organizer.username}}">
@@ -27,7 +26,6 @@
             <input type="text" class="form-control" id="longitude" name="longitude">
         </div>
 
-        {{!-- FILES --}}
         <div class="mb-3">
             <label for="formFile" class="form-label">Image</label>
             <input class="form-control" type="file" id="formFile" name="img">
@@ -40,7 +38,6 @@
         </div>
         {{/each}}
 
-
         <div class="d-grid gap-2">
             <button type="submit" class="btn btn-dark block">Create</button>
         </div>
@@ -48,8 +45,7 @@
         {{#if errorMessage}}
         <div id="error">{{{errorMessage}}}</div>
         {{/if}}
+
     </form>
-
-
 
 </div>

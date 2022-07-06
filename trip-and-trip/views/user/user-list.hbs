@@ -8,17 +8,12 @@
                 <div class="card-body">
                     <p class="card-title"><strong>{{username}}</strong></p>
 
-
                     <p class="card-text">{{role}}</p>
 
-
-
                     <a href="/users/{{id}}" class="btn btn-success btn-sm">Details</a>
-
+                    <a href="/users/{{id}}/edit" class="btn btn-warning btn-sm">Edit</a>
 
                     {{#if ../roles.isHIEROPHANT}}
-
-                    <a href="/users/{{id}}/edit" class="btn btn-warning btn-sm">Edit</a>
 
                     <hr>
                     <form action="/admin/{{id}}/initiate" method="POST" style="display: inline-block">
