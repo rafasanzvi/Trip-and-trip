@@ -33,7 +33,7 @@ const userSchema = new Schema(
     },
 
     avatar: {
-      type: String
+      type: [String]
     },
 
     plantsOfInterest: [{

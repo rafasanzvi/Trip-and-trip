@@ -6,9 +6,11 @@ const User = require('./../../models/User.model')
 const { isLoggedIn } = require('./../../middleware/session-guard')
 const { checkRole } = require('./../../middleware/role-checker')
 const uploaderConfig = require('./../../config/uploader.config')
+const { findById } = require('./../../models/Plant.model')
 
 
 router.get('/list', isLoggedIn, (req, res, next) => {
+
     User
         .find()
         .select({ username: 1, role: 1 })
@@ -18,9 +20,7 @@ router.get('/list', isLoggedIn, (req, res, next) => {
         .catch(err => console.log(err))
 })
 
-router.get('/:id', isLoggedIn, (req, res, next) => {
-    res.send('No arriesgo')
-})
+
 
 router.get('/:id/edit', isLoggedIn, (req, res, next) => {
 
@@ -34,9 +34,6 @@ router.get('/:id/edit', isLoggedIn, (req, res, next) => {
     Promise
         .all(promises)
         .then(([userData, plantsData]) => {
-
-            console.log({ userData, plantsData })
-
             res.render('user/user-edit', { userData, plantsData })
         })
         .catch(err => next(new Error(err)))
@@ -58,16 +55,27 @@ router.post('/:id/edit', isLoggedIn, uploaderConfig.single('avatar'), (req, res,
 
     User
         .findByIdAndUpdate(id, query, { new: true })
-        .then(() => res.redirect('/users/:id'))
+        .populate('plantsOfInterest')
+        .then(user => res.redirect('/users/list'))
         .catch(err => console.log(err))
 
 
 })
 
+router.get('/:id', isLoggedIn, (req, res, next) => {
+
+    const { id } = req.params
+
+    User
+        .findById(id)
+        .then(users => {
+            console.log(users)
+            res.render('user/user-details', users)
+        })
+        .catch(err => console.log(err))
 
 
-
-
+})
 
 
 
