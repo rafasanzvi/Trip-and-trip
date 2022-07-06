@@ -1,15 +1,14 @@
 const router = require('express').Router()
 const mongoose = require('mongoose')
-
 const Event = require('./../../models/Event.model')
 const Plant = require('./../../models/Plant.model')
 const User = require('./../../models/User.model')
-
 const { isLoggedIn } = require('./../../middleware/session-guard')
 const { checkRole } = require('./../../middleware/role-checker')
-
 const { formatErrorMessage } = require("./../../utils/format-error-message")
 const uploaderConfig = require('./../../config/uploader.config')
+
+const { formatDate } = require("./../../utils/format-date")
 
 
 router.get('/', isLoggedIn, (req, res, next) => {
@@ -17,7 +16,29 @@ router.get('/', isLoggedIn, (req, res, next) => {
         .find()
         .populate('organizer')
         .select({ organizer: 1, description: 1, date: 1 })
-        .then(events => res.render('events/event-list', { events }))
+        .then(eventsData => {
+            res.render('events/event-list', { eventsData })
+            // let formattedDate
+            // let newDates = [...eventsData]
+
+            // eventsData.forEach(elem => {
+            //     formattedDate = formatDate(elem.date)
+            //     newDates[elem](formattedDate)
+            //     let formattedElemData = { ...elem._doc, date: formattedDate }
+            //     console.log(newDates)
+
+
+            // })
+            // console.log(eventsData)
+
+            // console.log("---------------------------------", formattedDate)
+
+            // let formattedEventData = { ...eventsData._doc, date: formattedDate }
+
+            // console.log("---------------------------------", formattedEventData)
+
+            // res.render('events/event-list', { eventsData: formattedEventData })
+        })
         .catch(err => next(new Error(err)))
 
 })
@@ -80,7 +101,14 @@ router.get('/:id', isLoggedIn, (req, res, next) => {
     Event
         .findById(id)
         .populate('organizer plants attendees')
-        .then(eventData => res.render('events/event-details', eventData))
+        .then(eventData => {
+
+            const formattedDate = formatDate(eventData.date)
+
+            let formattedEventData = { ...eventData._doc, date: formattedDate }
+
+            res.render('events/event-details', { eventData: formattedEventData })
+        })
         .catch(err => next(new Error(err)))
 })
 

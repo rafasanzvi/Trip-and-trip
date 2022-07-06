@@ -1,16 +1,12 @@
 const router = require('express').Router()
-
 const Plant = require('./../../models/Plant.model')
 const User = require('./../../models/User.model')
 const Comment = require('./../../models/Comment.model')
-
 const { isLoggedIn } = require('./../../middleware/session-guard')
 const { checkRole } = require('./../../middleware/role-checker')
 const { checkOwnerOrHIEROPHANT } = require('./../../middleware/is-owner')
 const { rolesChecker } = require("./../../utils/roles-checker");
 const { formatDate } = require("./../../utils/format-date")
-
-
 const uploaderConfig = require('./../../config/uploader.config')
 
 
@@ -105,6 +101,7 @@ router.post('/:id/comment', isLoggedIn, (req, res, next) => {
     const { content } = req.body
 
     const editComment = { commenter: currentUser._id, content }
+    console.log(editComment)
 
     Comment
         .create(editComment)
