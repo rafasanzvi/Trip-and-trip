@@ -1,24 +1,25 @@
 <div class="container  mt-5">
-    <h2>{{organizer.username}}</h2>
-    <img src="{{imageURL}}" alt="event">
-    <p>{{description}}</p>
+    <h2>{{eventData.organizer.username}}</h2>
+    <img src="{{eventData.imageURL}}" alt="event">
+    <p>{{eventData.description}}</p>
     <p>Attendees:</p>
     <ul>
-        {{#each attendees}}
+        {{#each eventData.attendees}}
         <li>{{username}}</li>
         {{/each}}
     </ul>
-    <p>{{date}}</p>
+    <p>Event date: {{eventData.date}}</p>
+    <p>Plants involved:</p>
     <ul>
-        {{#each plants}}
+        {{#each eventData.plants}}
         <li>{{cName}}</li>
         {{/each}}
     </ul>
-    <a href="/events/{{id}}/edit" class="btn btn-warning btn-sm">Edit</a>
-    <form action="/events/{{id}}/join" method="POST" style="display: inline-block">
+    <a href="/events/{{eventData._id}}/edit" class="btn btn-warning btn-sm">Edit</a>
+    <form action="/events/{{eventData._id}}/join" method="POST" style="display: inline-block">
         <input type="submit" value="join" class="btn btn-success btn-sm">
     </form>
-    <form action="/events/{{id}}/delete" method="POST" style="display: inline-block">
+    <form action="/events/{{eventData._id}}/delete" method="POST" style="display: inline-block">
         <input type="submit" value="delete" class="btn btn-danger btn-sm">
     </form>
 
