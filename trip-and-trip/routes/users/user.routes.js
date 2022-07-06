@@ -1,5 +1,8 @@
 const router = require('express').Router()
+
+const Plant = require('./../../models/Plant.model')
 const User = require('./../../models/User.model')
+
 const { isLoggedIn } = require('./../../middleware/session-guard')
 const { checkRole } = require('./../../middleware/role-checker')
 const uploaderConfig = require('./../../config/uploader.config')
@@ -15,16 +18,31 @@ router.get('/list', isLoggedIn, (req, res, next) => {
         .catch(err => console.log(err))
 })
 
+router.get('/:id', isLoggedIn, (req, res, next) => {
+    res.send('No arriesgo')
+})
+
 router.get('/:id/edit', isLoggedIn, (req, res, next) => {
 
     const { id } = req.params
 
-    User
-        .findById(id).populate('plantsOfInterest')
-        .then(userData => res.render('user/user-edit', userData))
-        .catch(err => console.log(err))
-})
+    const promises = [
+        User.findById(id).populate('plantsOfInterest'),
+        Plant.find()
+    ]
 
+    Promise
+        .all(promises)
+        .then(([userData, plantsData]) => {
+
+            console.log({ userData, plantsData })
+
+            res.render('user/user-edit', { userData, plantsData })
+        })
+        .catch(err => next(new Error(err)))
+
+
+})
 
 router.post('/:id/edit', isLoggedIn, uploaderConfig.single('avatar'), (req, res, next) => {
 
@@ -47,10 +65,7 @@ router.post('/:id/edit', isLoggedIn, uploaderConfig.single('avatar'), (req, res,
 })
 
 
-///////CONTINUE
-router.get('/:id', isLoggedIn, (req, res, next) => {
-    res.send('No arriesgo')
-})
+
 
 
 
