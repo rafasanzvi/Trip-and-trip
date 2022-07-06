@@ -1,13 +1,13 @@
 const router = require("express").Router()
 
-const Event = require('./../../models/Event.model')
 
-router.get('/events', (req, res, next) => {
+const apiEventRouter = require('./api.events.routes')
+router.use('/', apiEventRouter)
 
-    Event
-        .find()
-        .then(events => res.json(events))
-        .catch(err => res.json({ Message: 'server error', err }))
-})
+const apiPlantRouter = require('./api.plants.routes')
+router.use('/', apiPlantRouter)
+
+
+
 
 module.exports = router

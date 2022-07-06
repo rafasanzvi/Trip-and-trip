@@ -86,11 +86,7 @@ router.get('/:id', isLoggedIn, (req, res, next) => {
 
             const formattedDate = formatDate(userData.dateOfBirth)
 
-            console.log('---esto es userData-', userData)
-
             let formattedUserData = { ...userData._doc, dateOfBirth: formattedDate }
-
-            console.log('----esto es aux ****', formattedUserData)
 
             res.render('user/user-details', { userData: formattedUserData, commentData })
         })
@@ -114,7 +110,6 @@ router.post('/:id/comment', isLoggedIn, (req, res, next) => {
 
 
 })
-
 
 
 module.exports = router

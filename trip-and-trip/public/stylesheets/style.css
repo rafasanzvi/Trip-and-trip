@@ -12,9 +12,27 @@ h1 {
   color: 15px;
 }
 
+img {
+  width: 100%;
+}
+
 .navbar form button {
   background: transparent;
   border: none;
+}
+
+.hero {
+  background-image: url('./../images/mandelbrot.gif');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+.index-btn {
+  color: white;
+  margin-top: 50px;
+  justify-content: center;
+  align-items: center;
 }
 
 #myMap {
@@ -29,8 +47,4 @@ h1 {
   padding: 5px;
   font-weight: 800;
   margin-top: 20px;
-}
-
-img {
-  width: 100%;
 }

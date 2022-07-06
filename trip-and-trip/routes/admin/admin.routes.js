@@ -1,8 +1,12 @@
 const router = require("express").Router()
 
+const { isLoggedIn } = require('./../../middleware/session-guard')
+const { checkRole } = require('./../../middleware/role-checker')
+
+
 const User = require("../../models/User.model")
 
-router.post('/:id/initiate', (req, res, next) => {
+router.post('/:id/initiate', isLoggedIn, checkRole('HIEROPHANT'), (req, res, next) => {
     const { id } = req.params
 
     User
@@ -12,7 +16,7 @@ router.post('/:id/initiate', (req, res, next) => {
 })
 
 
-router.post('/:id/elevate', (req, res, next) => {
+router.post('/:id/elevate', isLoggedIn, checkRole('HIEROPHANT'), (req, res, next) => {
     const { id } = req.params
 
     User

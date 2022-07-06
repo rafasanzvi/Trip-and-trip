@@ -96,9 +96,6 @@ router.get('/:id/edit', isLoggedIn, checkRole('CHAMAN', 'HIEROPHANT'), (req, res
     Promise
         .all(promises)
         .then(([eventEdition, plantsData]) => {
-
-            console.log({ eventEdition, plantsData })
-
             res.render('events/event-edit', { eventEdition, plantsData })
         })
         .catch(err => next(new Error(err)))
@@ -153,7 +150,7 @@ router.post('/:id/join', isLoggedIn, (req, res, next) => {
 
 })
 
-router.post('/:id/delete', checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
+router.post('/:id/delete', isLoggedIn, checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
 
     const { id } = req.params
 

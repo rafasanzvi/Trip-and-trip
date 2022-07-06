@@ -27,12 +27,9 @@ function getPlacesFromDB() {
 }
 
 function printMarkers(events) {
-    console.log(events)
 
     events.forEach(event => {
         let position = { lat: event.location.coordinates[0], lng: event.location.coordinates[1] }
-        console.log(position)
-
         new google.maps.Marker({ position, map })
 
     })
