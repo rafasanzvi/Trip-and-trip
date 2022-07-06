@@ -9,6 +9,9 @@ const { checkRole } = require('./../../middleware/role-checker')
 const { checkOwnerOrHIEROPHANT } = require('./../../middleware/is-owner')
 const { rolesChecker } = require("./../../utils/roles-checker");
 
+// const { formatDate } = require("./../../utils/format-date")
+// const date = { formatDate }
+
 const uploaderConfig = require('./../../config/uploader.config')
 
 
@@ -53,6 +56,8 @@ router.post('/:id/edit', isLoggedIn, checkOwnerOrHIEROPHANT, uploaderConfig.sing
 
     let query = { email, username, interests, dateOfBirth, plantsOfInterest, purpose }
 
+    //let date
+
     if (req.file) {
         query = { ...query, $push: { avatar: req.file.path } }
     }
@@ -83,21 +88,6 @@ router.get('/:id', isLoggedIn, (req, res, next) => {
             res.render('user/user-details', { userData, commentData })
         })
         .catch(err => next(new Error(err)))
-
-
-    // User
-    //     .findById(id)
-    //     .populate('comments')
-    //     .then(users => {
-    //         Comment.
-    //             find().populate()
-    //     })
-    //     .then(commentsData => {
-    //         console.log(commentsData)
-    //         res.render('user/user-details', { users, commentsData })
-    //     })
-    //     .catch(err => console.log(err))
-
 
 })
 
