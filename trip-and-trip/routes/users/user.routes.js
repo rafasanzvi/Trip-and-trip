@@ -62,7 +62,7 @@ router.post('/:id/edit', isLoggedIn, checkOwnerOrHIEROPHANT, uploaderConfig.sing
     User
         .findByIdAndUpdate(id, query, { new: true })
         .populate('plantsOfInterest')
-        .then(user => res.redirect('/users/list'))
+        .then(user => res.redirect(`/users/${id}`))
         .catch(err => console.log(err))
 
 
