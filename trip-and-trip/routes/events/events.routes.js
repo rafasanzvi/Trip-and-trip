@@ -109,7 +109,7 @@ router.post('/:id/edit', isLoggedIn, uploaderConfig.single('img'), checkRole('CH
     Event
         .findByIdAndUpdate(id, query)
         .then(() => {
-            res.redirect('/events')
+            res.redirect(`/events/${id}`)
         })
         .catch(err => next(new Error(err)))
 })
@@ -122,7 +122,7 @@ router.post('/:id/join', isLoggedIn, (req, res, next) => {
     Event
         .findByIdAndUpdate(id, { $push: { attendees: currentUser._id } })
         .then(() => {
-            res.redirect('/events')
+            res.redirect(`/events/${id}`)
         })
         .catch(err => next(new Error(err)))
 
