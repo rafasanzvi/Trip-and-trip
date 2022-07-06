@@ -5,13 +5,13 @@
     <hr>
     <img class="card-img-top" src="{{userData.avatar.[0]}}" alt="Card image cap">
     <hr>
-    <p>Interest: {{interests}}</p>
-    <p>Date of birth: {{dateOfBirth}}</p>
-    <p>Purpose: {{purpose}}</p>
+    <p>Interest: {{userData.interests}}</p>
+    <p>Date of birth: {{userData.dateOfBirth}}</p>
+    <p>Purpose: {{userData.purpose}}</p>
 
     <p>Plants of interest:</p>
     <ul>
-        {{#each plantsOfInterest}}
+        {{#each userData.plantsOfInterest}}
         <li>{{cName}}</li>
         {{/each}}
     </ul>
