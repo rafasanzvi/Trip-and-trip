@@ -1,69 +1,73 @@
-<div class="container">
+<div class="userForm">
+    <div class="container">
 
-    <div class="row justify-content-center">
+        <div class="row justify-content-center">
 
-        <div class="col-md-6">
+            <div class="col-md-6">
 
-            <h1>User profile</h1>
+                <h1>User profile</h1>
 
-            <hr>
+                <hr>
 
-            <form action="/users/{{userData.id}}/edit" method="POST" enctype="multipart/form-data">
+                <form action="/users/{{userData.id}}/edit" method="POST" enctype="multipart/form-data">
 
-                {{!-- EMAIL --}}
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email: </label>
-                    <input type="email" class="form-control" id="email" name="email" value="{{userData.email}}">
-                </div>
+                    {{!-- EMAIL --}}
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email: </label>
+                        <input type="email" class="form-control" id="email" name="email" value="{{userData.email}}">
+                    </div>
 
-                {{!-- USERNAME --}}
-                <div class="mb-3">
-                    <label for="username" class="form-label">Username:</label>
-                    <input type="text" class="form-control" id="username" name="username" value="{{userData.username}}">
-                </div>
+                    {{!-- USERNAME --}}
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username:</label>
+                        <input type="text" class="form-control" id="username" name="username"
+                            value="{{userData.username}}">
+                    </div>
 
-                {{!-- INTEREST --}}
-                <div class="mb-3">
-                    <label for="interests" class="form-label">Interests:</label>
-                    <input type="interests" class="form-control" id="interests" name="interests"
-                        value="{{userData.interests}}">
-                </div>
+                    {{!-- INTEREST --}}
+                    <div class="mb-3">
+                        <label for="interests" class="form-label">Interests:</label>
+                        <input type="interests" class="form-control" id="interests" name="interests"
+                            value="{{userData.interests}}">
+                    </div>
 
-                {{!-- BIRTH --}}
-                <div class="mb-3">
-                    <label for="dateOfBirth" class="form-label">Date of birth:</label>
-                    <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth"
-                        value="{{userData.dateOfBirth}}">
-                </div>
+                    {{!-- BIRTH --}}
+                    <div class="mb-3">
+                        <label for="dateOfBirth" class="form-label">Date of birth:</label>
+                        <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth"
+                            value="{{userData.dateOfBirth}}">
+                    </div>
 
-                {{!-- AVATAR --}}
-                <div class="mb-3">
-                    <label for="formFile" class="form-label">Avatar</label>
-                    <input class="form-control" type="file" id="formFile" name="avatar">
-                </div>
-
-
-                {{!-- PLANTS OF INTERESTS --}}
-                {{#each plantsData}}
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="{{id}}" id="flexCheckDefault"
-                        name="plantsOfInterest" />
-                    <label class="form-check-label" for="flexCheckDefault">{{cName}}</label>
-                </div>
-                {{/each}}
+                    {{!-- AVATAR --}}
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Avatar</label>
+                        <input class="form-control" type="file" id="formFile" name="avatar">
+                    </div>
 
 
-                {{!-- PURPOSE --}}
-                <div class="mb-3">
-                    <label for="purpose" class="form-label">Purpose:</label>
-                    <input type="text" class="form-control" id="purpose" name="purpose" value="{{userData.purpose}}">
-                </div>
+                    {{!-- PLANTS OF INTERESTS --}}
+                    {{#each plantsData}}
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="{{id}}" id="flexCheckDefault"
+                            name="plantsOfInterest" />
+                        <label class="form-check-label" for="flexCheckDefault">{{cName}}</label>
+                    </div>
+                    {{/each}}
 
-                <button type="submit" class="btn btn-dark">Edit user</button>
-            </form>
 
+                    {{!-- PURPOSE --}}
+                    <div class="mb-3">
+                        <label for="purpose" class="form-label">Purpose:</label>
+                        <input type="text" class="form-control" id="purpose" name="purpose"
+                            value="{{userData.purpose}}">
+                    </div>
+
+                    <button type="submit" class="btn btn-dark">Edit user</button>
+                </form>
+
+            </div>
         </div>
+
+
     </div>
-
-
 </div>
