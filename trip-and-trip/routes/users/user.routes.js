@@ -73,9 +73,13 @@ router.get('/:id', isLoggedIn, (req, res, next) => {
         .findById(id)
         .populate('plantsOfInterest comments')
         .then(userData => {
-            const formattedDate = formatDate(userData.dateOfBirth)
-            formattedUserData = { ...userData._doc, dateOfBirth: formattedDate }
-            console.log(userData.username)
+
+            if (userData.dateOfBirth) {
+                const formattedDate = formatDate(userData.dateOfBirth)
+                formattedUserData = { ...userData._doc, dateOfBirth: formattedDate }
+            }
+            formattedUserData = userData
+
             return Comment.find({ commentedPlace: userData.username }).populate('commenter')
         })
         .then(commentData => {

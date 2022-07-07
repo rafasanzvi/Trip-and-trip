@@ -87,11 +87,6 @@ router.post('/create', isLoggedIn, uploaderConfig.single('img'), checkRole('CHAM
 
 })
 
-router.get("/map", (req, res, next) => {
-
-    res.render("map/place-map")
-})
-
 router.get('/:id', isLoggedIn, (req, res, next) => {
 
     const { id } = req.params

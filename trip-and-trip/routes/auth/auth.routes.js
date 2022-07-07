@@ -5,11 +5,12 @@ const mongoose = require('mongoose')
 
 const User = require('./../../models/User.model')
 
+const { isLoggedOut } = require('./../../middleware/session-guard')
 const { formatErrorMessage } = require("./../../utils/format-error-message")
 const saltRounds = 10
 
 
-router.get('/register', (req, res, next) => {
+router.get('/register', isLoggedOut, (req, res, next) => {
 
     res.render('auth/auth-register')
 })
@@ -55,7 +56,7 @@ router.post('/login', (req, res, next) => {
                 return
             } else {
                 req.session.currentUser = user
-                res.redirect('/')
+                res.redirect('/plants')
             }
         })
         .catch(error => next(error))

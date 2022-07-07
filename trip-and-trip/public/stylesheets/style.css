@@ -20,6 +20,7 @@ img {
 }
 
 footer {
+  color: white;
   font-size: .9em;
   position: fixed;
   bottom: 0;
@@ -29,6 +30,12 @@ footer {
 .navbar form button {
   background: transparent;
   border: none;
+}
+
+.productImg {
+  background-size: cover;
+  object-fit: cover;
+  align-self: center;
 }
 
 .hero {

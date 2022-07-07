@@ -10,7 +10,7 @@ const adminRouter = require('./admin/admin.routes')
 router.use('/admin', adminRouter)
 
 const mapRouter = require('./map/map.routes')
-router.use('/maps', mapRouter)
+router.use('/', mapRouter)
 
 const eventRouter = require('./events/events.routes')
 router.use('/events', eventRouter)
