@@ -60,6 +60,7 @@ footer {
   color: white;
 }
 
+
 #myMap {
   height: 500px;
 
@@ -97,8 +98,39 @@ footer {
   background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../images/green-leaf-texture-leaf-texture-background.jpg);
   background-size: cover;
   padding: 50px;
-  margin-bottom: 40px;
-  color: fuchsia;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/*/////////////////////////EVENT STYLES/////////////////////////////////////////////////*/
+
+.eventForm {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../images/geometry.jpg);
+  background-size: cover;
+  padding: 50px;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/*/////////////////////////USER STYLES/////////////////////////////////////////////////*/
+
+.userForm {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../images/metatron.jpg);
+  background-size: cover;
+  padding: 50px;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.userList {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../images/metatron.jpg);
+  background-size: cover;
+  height: 100vh;
+  padding: 50px;
+  color: white;
   font-size: 15px;
   font-weight: 600;
 }

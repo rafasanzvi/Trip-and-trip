@@ -1,39 +1,55 @@
-<div class="container mt-5">
+<div class="eventForm">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
 
-    <h1 id="listTitle">Choose your path</h1>
+                <h1 id="listTitle">Choose your path</h1>
+            </div>
+            <div class="row">
 
-    <div class="row">
+                {{#each newDates}}
 
-        {{#each newDates}}
+                <div class="col-md-4 mb-5 mt-5 mx-auto">
 
-        <div class="col-md-4 mb-5 mt-5 mx-auto">
+                    <div class="card border-dark bg-transparent">
 
-            <div class="card border-dark">
+                        <div class="card-body justify-content-center">
 
-                <div class="card-body">
+                            <p class="card-title"><strong><b>{{description}}</b></strong></p>
 
-                    <p class="card-title"><strong>{{organizer.username}}</strong></p>
+                            <p class="card-title">{{date}}</p>
 
-                    <p class="card-title">{{date}}</p>
+                            <p class="card-title">{{organizer.username}}</p>
 
-                    <p class="card-title">{{description}}</p>
+                            <a href="/events/{{_id}}">Details</a>
 
-                    <a href="/events/{{_id}}">Details</a>
+                            <a href="/events/{{_id}}/edit" class="btn btn-warning btn-sm">Edit</a>
 
-                    <a href="/events/{{_id}}/edit" class="btn btn-warning btn-sm">Edit</a>
+                            <form action="/events/{{_id}}/delete" method="POST" style="display: inline-block">
+                                <input type="submit" value="delete" class="btn btn-danger btn-sm">
+                            </form>
 
-                    <form action="/events/{{_id}}/delete" method="POST" style="display: inline-block">
-                        <input type="submit" value="delete" class="btn btn-danger btn-sm">
-                    </form>
+                        </div>
+
+                    </div>
 
                 </div>
 
+                {{/each}}
+
             </div>
 
+
+
         </div>
-
-        {{/each}}
-
     </div>
+
+</div>
+
+
+
+
+
+
 
 </div>

@@ -1,37 +1,39 @@
-<div class="container">
+<div class="userForm">
+    <div class="container">
 
-    <h1>{{userData.username}}</h1>
+        <h1>{{userData.username}}</h1>
 
-    <hr>
-    <img class="card-img-top" src="{{userData.avatar.[0]}}" alt="Card image cap">
-    <hr>
-    <p>Interest: {{userData.interests}}</p>
-    <p>Date of birth: {{userData.dateOfBirth}}</p>
-    <p>Purpose: {{userData.purpose}}</p>
+        <hr>
+        <img class="card-img-top" src="{{userData.avatar.[0]}}" alt="Card image cap">
+        <hr>
+        <p>Interest: {{userData.interests}}</p>
+        <p>Date of birth: {{userData.dateOfBirth}}</p>
+        <p>Purpose: {{userData.purpose}}</p>
 
-    <p>Plants of interest:</p>
-    <ul>
-        {{#each userData.plantsOfInterest}}
-        <li>{{cName}}</li>
-        {{/each}}
-    </ul>
-    <hr>
-
-    <div class="card">
-        <div class="card-body">
-            {{#each commentData}}
-            <p class="card-title"><strong>{{this.commenter.username}}</strong></p>
-            <p class="card-text">{{this.content}}</p>
-            <hr>
+        <p>Plants of interest:</p>
+        <ul>
+            {{#each userData.plantsOfInterest}}
+            <li>{{cName}}</li>
             {{/each}}
+        </ul>
+        <hr>
+
+        <div class="card bg-transparent">
+            <div class="card-body">
+                {{#each commentData}}
+                <p class="card-title"><strong>{{this.commenter.username}}</strong></p>
+                <p class="card-text">{{this.content}}</p>
+                <hr>
+                {{/each}}
+            </div>
         </div>
+
+        <form action="/users/{{userData._id}}/comment" method="post">
+            <textarea class='form-control mb-2' name="content" placeholder="Comment"></textarea>
+            <div class="text-right mb-5">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+
     </div>
-
-    <form action="/users/{{userData._id}}/comment" method="post">
-        <textarea class='form-control' name="content" placeholder="Comment"></textarea>
-        <div class="text-right mb-5">
-            <button type="submit" class="btn btn-primary">Save</button>
-        </div>
-    </form>
-
 </div>

@@ -22,22 +22,21 @@ router.get('/', isLoggedIn, (req, res, next) => {
 
     Event
         .find()
-        .populate('organizer')
-        .select({ organizer: 1, description: 1, date: 1 })
+        .populate('organizer plants')
+        // .select({ organizer: 1, description: 1, date: 1, plants: 1 })
         .then(eventsData => {
 
 
-            let newDates = []
 
-            eventsData.forEach(elem => {
+            let formattedDate
+            let formattedElemData
 
-                let formattedDate = formatDate(elem.date)
-                let formattedElemData = { ...elem._doc, date: formattedDate }
-                console.log({ ...elem })
-                newDates.push(formattedElemData)
-
+            const newDates = eventsData.map(elem => {
+                formattedDate = formatDate(elem.date)
+                formattedElemData = { ...elem._doc, date: formattedDate }
+                return formattedElemData
             })
-
+            console.log(eventsData)
             res.render('events/event-list', { newDates })
         })
         .catch(err => next(new Error(err)))

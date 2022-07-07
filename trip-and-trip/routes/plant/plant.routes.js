@@ -82,11 +82,13 @@ router.post('/:id/edit', isLoggedIn, uploaderConfig.any('img'), checkRole('CHAMA
     let query = { sName, cName, region, culture, files, properties, description }
     console.log(req.files)
     if (req.files) {
-        let paths = []
+
         const filesData = req.files
-        filesData.forEach(file =>
-            paths.push(file.path))
-        console.log(paths)
+
+        const paths = filesData.map(file => {
+            return file.path
+        })
+
         query = { ...query, $push: { imageURL: paths } }
     }
 

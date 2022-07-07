@@ -44,11 +44,10 @@ const userSchema = new Schema(
     purpose: {
       type: String
     },
-    comments:
-      [{
-        type: Schema.Types.ObjectId,
-        ref: 'Comment'
-      }]
+    comments: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Comment'
+    }]
 
   },
   {

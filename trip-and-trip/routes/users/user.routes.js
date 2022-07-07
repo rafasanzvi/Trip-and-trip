@@ -83,7 +83,6 @@ router.get('/:id', isLoggedIn, (req, res, next) => {
             return Comment.find({ commentedPlace: userData.username }).populate('commenter')
         })
         .then(commentData => {
-            // console.log(userData)
             res.render('user/user-details', { userData: formattedUserData, commentData })
         })
         .catch(err => next(new Error(err)))
