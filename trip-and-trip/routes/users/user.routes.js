@@ -77,8 +77,11 @@ router.get('/:id', isLoggedIn, (req, res, next) => {
             if (userData.dateOfBirth) {
                 const formattedDate = formatDate(userData.dateOfBirth)
                 formattedUserData = { ...userData._doc, dateOfBirth: formattedDate }
+                console.log(formattedUserData)
+            } else {
+                formattedUserData = userData
             }
-            formattedUserData = userData
+
 
             return Comment.find({ commentedPlace: userData.username }).populate('commenter')
         })

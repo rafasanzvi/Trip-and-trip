@@ -26,8 +26,6 @@ router.get('/', isLoggedIn, (req, res, next) => {
         // .select({ organizer: 1, description: 1, date: 1, plants: 1 })
         .then(eventsData => {
 
-
-
             let formattedDate
             let formattedElemData
 
@@ -42,11 +40,6 @@ router.get('/', isLoggedIn, (req, res, next) => {
 
                 return elem
 
-
-
-                // formattedDate = formatDate(elem.date)
-                // formattedElemData = { ...elem._doc, date: formattedDate }
-                // return formattedElemData
             })
             console.log('------------------------', newDates)
             res.render('events/event-list', { newDates })
