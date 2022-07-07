@@ -301,6 +301,7 @@ footer {
   color: rgb(215, 215, 215);
   font-family: monospace;
   font-size: 16px;
+  margin-right: 20px;
 }
 
 .indexHeaders {
@@ -312,14 +313,24 @@ footer {
   -webkit-text-stroke: .5px black;
 }
 
-/* .indexHeaders h3 {
-  font-family: monospace;
-  font-size: 30px;
-  text-align: center;
-} */
+.indexHeaders h1 {
+  font-size: 70px;
+  font-weight: 600;
+}
 
-/* .indexHeaders h4 {
-  font-family: monospace;
-  font-size: 30px;
+.indexHeaders h2 {
+  margin: 20px;
+}
+
+.indexHeaders h4 {
+  margin-bottom: 40px;
+}
+
+.indexButtons a {
+  margin: 15px;
+}
+
+.headerLoginForm {
   text-align: center;
-} */
+  font-family: monospace;
+}

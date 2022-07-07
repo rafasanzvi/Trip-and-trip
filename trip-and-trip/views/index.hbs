@@ -5,12 +5,14 @@
             <div class="col-12 align-content-center">
                 <div class="indexHeaders">
                     <h1>{{appTitle}}</h1>
-                    <h3>Un manual para su uso terapéutico</h3>
-                    <h4>Vuestro viaje es nuestro destino</h4>
-                    {{#if isLoggedOut}}
-                    <a class="buttonGreen" href="/register">Register</a>
-                    <a class="buttonBlue" href="/login">Log in</a>
-                    {{/if}}
+                    <h2>Vuestro viaje es nuestro destino</h2>
+                    <h4>Un manual para su uso terapéutico</h4>
+                    <div class="indexButtons">
+                        {{#if isLoggedOut}}
+                        <a class="buttonGreen" href="/register">Register</a>
+                        <a class="buttonBlue" href="/login">Log in</a>
+                        {{/if}}
+                    </div>
                 </div>
             </div>
 
