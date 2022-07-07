@@ -1,103 +1,104 @@
-<div class="container">
+<div class="plantForm">
+    <div class="container">
 
-    <div class="row justify-content-center">
+        <div class="row justify-content-center">
 
-        <div class="col-md-6">
+            <div class="col-md-6">
 
-            <h1 class="headerForm">Create a new plant</h1>
-            <hr>
+                <h1 class="headerForm">Create a new plant</h1>
 
-            <form action="/plants/create" method="POST" enctype="multipart/form-data">
+                <form action="/plants/create" method="POST" enctype="multipart/form-data">
 
-                <div class="mb-3">
-                    <label for="sName" class="form-label">Scientific name:</label>
-                    <input type="text" class="form-control" id="sName" name="sName">
-                </div>
-
-                <div class="mb-3">
-                    <label for="cName" class="form-label">Common name:</label>
-                    <input type="text" class="form-control" id="cName" name="cName">
-                </div>
-
-                <div class="mb-3">
-
-                    <p>Region:</p>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Africa" id="flexCheckDefault"
-                            name="region" />
-                        <label class="form-check-label" for="flexCheckDefault">Africa</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="America" id="flexCheckDefault"
-                            name="region" />
-                        <label class="form-check-label" for="flexCheckDefault">America</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Asia" id="flexCheckDefault"
-                            name="region" />
-                        <label class="form-check-label" for="flexCheckDefault">Asia</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Europe" id="flexCheckDefault"
-                            name="region" />
-                        <label class="form-check-label" for="flexCheckDefault">Europe</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Oceania" id="flexCheckDefault"
-                            name="region" />
-                        <label class="form-check-label" for="flexCheckDefault">Oceania</label>
+                    <div class="mb-3">
+                        <label for="sName" class="form-label">Scientific name:</label>
+                        <input type="text" class="form-control" id="sName" name="sName">
                     </div>
 
-                </div>
-
-                <div class="mb-3">
-                    <label for="culture" class="form-label">Culture:</label>
-                    <input type="text" class="form-control" id="culture" name="culture">
-                </div>
-
-                <div class="mb-3">
-                    <label for="formFile" class="form-label">Files:</label>
-                    <input type="file" class="form-control" id="formFile" name="img">
-                </div>
-
-                <div class="mb-3">
-
-                    <p>Properties:</p>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Psychedelic" id="flexCheckDefault"
-                            name="properties" />
-                        <label class="form-check-label" for="flexCheckDefault">Psychedelic</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Medicinal" id="flexCheckDefault"
-                            name="properties" />
-                        <label class="form-check-label" for="flexCheckDefault">Medicinal</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="Toxic" id="flexCheckDefault"
-                            name="properties" />
-                        <label class="form-check-label" for="flexCheckDefault">Toxic</label>
+                    <div class="mb-3">
+                        <label for="cName" class="form-label">Common name:</label>
+                        <input type="text" class="form-control" id="cName" name="cName">
                     </div>
 
-                </div>
+                    <div class="mb-3">
 
-                <div class="mb-3">
-                    <label for="description" class="form-label">Description:</label>
-                    <input type="text" class="form-control" id="description" name="description">
-                </div>
+                        <p>Region:</p>
 
-                <button type="submit" class="btn btn-dark">Create plant</button>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Africa" id="flexCheckDefault"
+                                name="region" />
+                            <label class="form-check-label" for="flexCheckDefault">Africa</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="America" id="flexCheckDefault"
+                                name="region" />
+                            <label class="form-check-label" for="flexCheckDefault">America</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Asia" id="flexCheckDefault"
+                                name="region" />
+                            <label class="form-check-label" for="flexCheckDefault">Asia</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Europe" id="flexCheckDefault"
+                                name="region" />
+                            <label class="form-check-label" for="flexCheckDefault">Europe</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Oceania" id="flexCheckDefault"
+                                name="region" />
+                            <label class="form-check-label" for="flexCheckDefault">Oceania</label>
+                        </div>
 
-            </form>
+                    </div>
 
-            {{#if errorMessage}}
-            <div id="error">{{{errorMessage}}}</div>
-            {{/if}}
+                    <div class="mb-3">
+                        <label for="culture" class="form-label">Culture:</label>
+                        <input type="text" class="form-control" id="culture" name="culture">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Files:</label>
+                        <input type="file" class="form-control" id="formFile" name="img">
+                    </div>
+
+                    <div class="mb-3">
+
+                        <p>Properties:</p>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Psychedelic" id="flexCheckDefault"
+                                name="properties" />
+                            <label class="form-check-label" for="flexCheckDefault">Psychedelic</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Medicinal" id="flexCheckDefault"
+                                name="properties" />
+                            <label class="form-check-label" for="flexCheckDefault">Medicinal</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Toxic" id="flexCheckDefault"
+                                name="properties" />
+                            <label class="form-check-label" for="flexCheckDefault">Toxic</label>
+                        </div>
+
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description:</label>
+                        <input type="text" class="form-control" id="description" name="description">
+                    </div>
+
+                    <button type="submit" class="btn btn-dark">Create plant</button>
+
+                </form>
+
+                {{#if errorMessage}}
+                <div id="error">{{{errorMessage}}}</div>
+                {{/if}}
+
+            </div>
 
         </div>
 
     </div>
-
 </div>
