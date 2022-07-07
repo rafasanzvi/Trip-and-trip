@@ -64,8 +64,22 @@ img {
 
 /*/////////////////////////PLANT STYLES/////////////////////////////////////////////////*/
 
-#plantTitle {
+#listTitle {
+  font-weight: 550;
+  margin-top: 20px;
   text-align: center;
   font-size: 60px;
   font-family: monospace;
+}
+
+.headerForm {
+  font-size: 40px;
+  margin: 20px;
+  text-align: center;
+  font-family: monospace;
+}
+
+.formLetters {
+  font-size: 30px;
+  font-weight: 200;
 }
