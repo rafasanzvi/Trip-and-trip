@@ -285,3 +285,33 @@ footer {
   display: flex;
   flex-direction: column;
 }
+
+.navbar-dark .navbar-brand {
+  color: rgb(215, 215, 215);
+  font-family: monospace;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: rgb(215, 215, 215);
+  font-family: monospace;
+  font-size: 16px;
+}
+
+.indexHeaders h1 {
+  font-family: monospace;
+  font-weight: 600;
+  font-size: 0px;
+  text-align: center;
+}
+
+/* .indexHeaders h3 {
+  font-family: monospace;
+  font-size: 30px;
+  text-align: center;
+} */
+
+/* .indexHeaders h4 {
+  font-family: monospace;
+  font-size: 30px;
+  text-align: center;
+} */
