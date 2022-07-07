@@ -27,6 +27,10 @@ footer {
   width: 100%;
 }
 
+.navbar {
+  height: 60px;
+}
+
 .navbar form button {
   background: transparent;
   border: none;
@@ -86,9 +90,15 @@ footer {
   margin: 20px;
   text-align: center;
   font-family: monospace;
+  font-weight: 600;
 }
 
-.formLetters {
-  font-size: 30px;
-  font-weight: 200;
+.plantForm {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../images/green-leaf-texture-leaf-texture-background.jpg);
+  background-size: cover;
+  padding: 50px;
+  margin-bottom: 40px;
+  color: fuchsia;
+  font-size: 15px;
+  font-weight: 600;
 }
