@@ -1,7 +1,11 @@
 const router = require("express").Router();
 
 router.get("/", (req, res, next) => {
-    res.render("index");
+
+    let isLoggedOut = false
+    req.session.currentUser ? isLoggedOut = false : isLoggedOut = true
+
+    res.render("index", { isLoggedOut });
 });
 
 module.exports = router;
