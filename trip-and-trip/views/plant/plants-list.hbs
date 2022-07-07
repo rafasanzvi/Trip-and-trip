@@ -1,47 +1,36 @@
-<div class="container">
+<div class="plantForm">
 
-    <h1 id="listTitle">Our magic ingredients</h1>
+    <div class="container">
 
-    <div class="row">
+        <h1 id="listTitle">Our magic ingredients</h1>
 
-        {{#each plants}}
+        <div class="row">
 
-        <div class="card col-3 mb-5 mt-5 mx-auto" style="width: 18rem;">
+            {{#each plants}}
 
-            <img class="card-img-top productImg" src="{{imageURL.[0]}}" alt="Card image cap">
+            <div class="card col-3 mb-5 mt-5 mx-auto bg-transparent plantCard border-light border-3">
 
-            <div class="card-body">
-                <h5 class="card-title">{{cName}}</h5>
-                <p class="card-text">{{sName}}</p>
+                <img class="card-img-top productImg mt-3" src="{{imageURL.[0]}}" alt="Card image cap">
+
+                <div class="card-body">
+                    <h5 class="card-title">{{cName}}</h5>
+                    <p class="card-text">{{sName}}</p>
+                </div>
+
+                <ul class="list-group list-group-flush">
+                    {{#each region}}
+                    <li class="list-group-item">{{this}}</li>
+                    {{/each}}
+                </ul>
+
+                <div class="card-body">
+                    <a href="/plants/{{id}}" class="btn btn-success btn-sm">Details</a>
+                    <a href="/plants/{{id}}/edit" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="/plants/{{id}}/delete" class="btn btn-danger btn-sm">Delete</a>
+                </div>
             </div>
-
-            <ul class="list-group list-group-flush">
-                {{#each region}}
-                <li class="list-group-item">{{this}}</li>
-                {{/each}}
-            </ul>
-
-            <div class="card-body">
-                <a href="/plants/{{id}}" class="btn btn-success btn-sm">Details</a>
-                <a href="/plants/{{id}}/edit" class="btn btn-warning btn-sm">Edit</a>
-                <a href="/plants/{{id}}/delete" class="btn btn-danger btn-sm">Delete</a>
-            </div>
+            {{/each}}
         </div>
-        {{/each}}
     </div>
-
-
-    {{!-- Canvas de chart --}}
-    <figure class="one-full-column height-300">
-        <canvas id="chart5"></canvas>
-    </figure>
-
-    {{!-- Chart Scripts --}}
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
-    <script src="js/colors.js"></script>
-    <script src="js/defaults.js"></script>
-    <script src="js/charts.js"></script>
-
-
 
 </div>

@@ -40,6 +40,7 @@ footer {
   background-size: cover;
   object-fit: cover;
   align-self: center;
+  height: 200px;
 }
 
 .hero {
@@ -95,7 +96,7 @@ footer {
 }
 
 .plantForm {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../images/green-leaf-texture-leaf-texture-background.jpg);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(../images/green-leaf-texture-leaf-texture-background.jpg);
   background-size: cover;
   padding: 50px;
   color: white;
@@ -133,4 +134,14 @@ footer {
   color: white;
   font-size: 15px;
   font-weight: 600;
+}
+
+.plantCard {
+  width: 18rem;
+  background-color: transparent;
+
+}
+
+.ourNav {
+  background-color: rgb(7, 49, 27) !important
 }
