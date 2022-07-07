@@ -13,22 +13,22 @@
 
                     <div class="card border-dark bg-transparent">
 
-                        <div class="card-body justify-content-center">
+                        <div class="card-body">
 
                             <p class="card-title"><strong><b>{{description}}</b></strong></p>
 
                             <p class="card-title">{{date}}</p>
 
                             <p class="card-title">{{organizer.username}}</p>
+                            <div class="listButtons">
+                                <a href="/events/{{_id}}" class="buttonGreen">Details</a>
 
-                            <a href="/events/{{_id}}">Details</a>
+                                <a href="/events/{{_id}}/edit" class="buttonBlue">Edit</a>
 
-                            <a href="/events/{{_id}}/edit" class="btn btn-warning btn-sm">Edit</a>
-
-                            <form action="/events/{{_id}}/delete" method="POST" style="display: inline-block">
-                                <input type="submit" value="delete" class="btn btn-danger btn-sm">
-                            </form>
-
+                                <form action="/events/{{_id}}/delete" method="POST" style="display: inline-block">
+                                    <input type="submit" value="delete" class="buttonRed">
+                                </form>
+                            </div>
                         </div>
 
                     </div>

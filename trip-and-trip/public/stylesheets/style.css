@@ -43,11 +43,22 @@ footer {
   height: 200px;
 }
 
+.plantDetail {
+  background-size: cover;
+  object-fit: cover;
+  align-self: center;
+  height: 400px;
+}
+
 .hero {
   background-image: url('./../images/fractals.gif');
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
+  padding: 50px;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
 }
 
 .index-btn {
@@ -136,6 +147,12 @@ footer {
   font-weight: 600;
 }
 
+.userCard {
+  font-size: 1.5em;
+  -webkit-text-stroke: 2px black;
+  justify-content: center;
+}
+
 .plantCard {
   width: 18rem;
   background-color: transparent;
@@ -144,4 +161,127 @@ footer {
 
 .ourNav {
   background-color: rgb(7, 49, 27) !important
+}
+
+
+
+/*/////////////////////////BUTTON STYLES/////////////////////////////////////////////////*/
+
+
+
+.buttonGreen {
+  --green: #1BFD9C;
+  font-size: 15px;
+  padding: 0.7em 2.7em;
+  letter-spacing: 0.06em;
+  position: relative;
+  font-family: inherit;
+  border-radius: 0.6em;
+  overflow: hidden;
+  transition: all 0.3s;
+  line-height: 1.4em;
+  border: 2px solid var(--green);
+  background: linear-gradient(to right, rgba(27, 253, 156, 0.1) 1%, transparent 40%, transparent 60%, rgba(27, 253, 156, 0.1) 100%);
+  color: var(--green);
+  box-shadow: inset 0 0 10px rgba(27, 253, 156, 0.4), 0 0 9px 3px rgba(27, 253, 156, 0.1);
+}
+
+.buttonGreen:hover {
+  color: #82ffc9;
+  box-shadow: inset 0 0 10px rgba(27, 253, 156, 0.6), 0 0 9px 3px rgba(27, 253, 156, 0.2);
+}
+
+.buttonGreen:before {
+  content: "";
+  position: absolute;
+  left: -4em;
+  width: 4em;
+  height: 100%;
+  top: 0;
+  transition: transform .4s ease-in-out;
+  background: linear-gradient(to right, transparent 1%, rgba(27, 253, 156, 0.1) 40%, rgba(27, 253, 156, 0.1) 60%, transparent 100%);
+}
+
+.buttonGreen:hover:before {
+  transform: translateX(15em);
+}
+
+
+.buttonBlue {
+  --blue: #2238da;
+  font-size: 15px;
+  padding: 0.7em 2.7em;
+  letter-spacing: 0.06em;
+  position: relative;
+  font-family: inherit;
+  border-radius: 0.6em;
+  overflow: hidden;
+  transition: all 0.3s;
+  line-height: 1.4em;
+  border: 2px solid var(--blue);
+  background: linear-gradient(to right, rgba(27, 253, 156, 0.1) 1%, transparent 40%, transparent 60%, rgba(27, 253, 156, 0.1) 100%);
+  color: var(--blue);
+  box-shadow: inset 0 0 10px rgba(27, 253, 156, 0.4), 0 0 9px 3px rgba(30, 55, 195, 0.1);
+}
+
+.buttonBlue:hover {
+  color: #5278e2;
+  box-shadow: inset 0 0 10px rgba(54, 108, 223, 0.6), 0 0 9px 3px rgba(52, 137, 212, 0.2);
+}
+
+.buttonBlue:before {
+  content: "";
+  position: absolute;
+  left: -4em;
+  width: 4em;
+  height: 100%;
+  top: 0;
+  transition: transform .4s ease-in-out;
+  background: linear-gradient(to right, transparent 1%, rgba(36, 46, 236, 0.1) 40%, rgba(27, 99, 253, 0.1) 60%, transparent 100%);
+}
+
+.buttonBlue:hover:before {
+  transform: translateX(15em);
+}
+
+.buttonRed {
+  --blue: #d12e15;
+  font-size: 15px;
+  padding: 0.7em 2.7em;
+  letter-spacing: 0.06em;
+  position: relative;
+  font-family: inherit;
+  border-radius: 0.6em;
+  overflow: hidden;
+  transition: all 0.3s;
+  line-height: 1.4em;
+  border: 2px solid var(--blue);
+  background: linear-gradient(to right, rgba(243, 128, 20, 0.1) 1%, transparent 40%, transparent 60%, rgba(27, 253, 156, 0.1) 100%);
+  color: var(--blue);
+  box-shadow: inset 0 0 10px rgba(253, 99, 27, 0.4), 0 0 9px 3px rgba(214, 108, 9, 0.1);
+}
+
+.buttonRed:hover {
+  color: #5278e2;
+  box-shadow: inset 0 0 10px rgba(220, 26, 15, 0.6), 0 0 9px 3px rgba(220, 147, 38, 0.2);
+}
+
+.buttonRed.before {
+  content: "";
+  position: absolute;
+  left: -4em;
+  width: 4em;
+  height: 100%;
+  top: 0;
+  transition: transform .4s ease-in-out;
+  background: linear-gradient(to right, transparent 1%, rgba(216, 147, 10, 0.687) 40%, rgba(253, 121, 27, 0.1) 60%, transparent 100%);
+}
+
+.buttonRed:hover:before {
+  transform: translateX(15em);
+}
+
+.listButtons {
+  display: flex;
+  flex-direction: column;
 }

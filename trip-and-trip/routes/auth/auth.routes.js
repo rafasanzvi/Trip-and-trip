@@ -24,7 +24,7 @@ router.post('/register', (req, res, next) => {
         .genSalt(saltRounds)
         .then(salt => bcrypt.hash(userPwd, salt))
         .then(hashedPassword => User.create({ ...req.body, password: hashedPassword }))
-        .then(() => res.redirect('back'))
+        .then(() => res.redirect('/login'))
         .catch(error => {
             if (error instanceof mongoose.Error.ValidationError) {
                 res.render('auth/auth-register', { errorMessage: formatErrorMessage(error) })
@@ -56,7 +56,7 @@ router.post('/login', (req, res, next) => {
                 return
             } else {
                 req.session.currentUser = user
-                res.redirect('back')
+                res.redirect('/plants')
             }
         })
         .catch(error => next(error))

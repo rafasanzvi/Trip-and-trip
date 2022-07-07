@@ -7,21 +7,21 @@
                 <div class="card border-dark  bg-transparent">
 
                     <div class="card-body">
-                        <p class="card-title"><strong>{{username}}</strong></p>
+                        <p class="card-title userCard"><strong>{{username}}</strong></p>
 
-                        <p class="card-text">{{role}}</p>
+                        <p class="card-text userCard">{{role}}</p>
 
-                        <a href="/users/{{id}}" class="btn btn-success btn-sm">Details</a>
-                        <a href="/users/{{id}}/edit" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="/users/{{id}}" class="buttonGreen">Details</a>
+                        <a href="/users/{{id}}/edit" class="buttonRed">Edit</a>
 
                         {{#if ../roles.isHIEROPHANT}}
 
                         <hr>
                         <form action="/admin/{{id}}/initiate" method="POST" style="display: inline-block">
-                            <input type="submit" value="Initiate" class="btn btn-info btn-sm">
+                            <input type="submit" value="Initiate" class="buttonBlue">
                         </form>
                         <form action="/admin/{{id}}/elevate" method="POST" style="display: inline-block">
-                            <input type="submit" value="Elevate" class="btn btn-info btn-sm">
+                            <input type="submit" value="Elevate" class="buttonBlue">
                         </form>
 
                         {{/if}}
