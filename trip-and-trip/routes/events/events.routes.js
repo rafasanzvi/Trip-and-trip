@@ -69,9 +69,8 @@ router.post('/create', isLoggedIn, uploaderConfig.single('img'), checkRole('CHAM
     let query = { date, plants, description, location }
 
     if (req.file) {
-        query = { ...query, $push: { imageURL: req.file.path } }
+        query = { ...query, imageURL: req.file.path }
     }
-
 
     const editEvent = { ...query, organizer: currentUser._id }
 
