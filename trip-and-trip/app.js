@@ -7,7 +7,7 @@ const app = express()
 
 require("./config")(app)
 
-app.locals.appTitle = `WHATEVER`
+app.locals.appTitle = `TRIP AND TRIP`
 
 require('./config/session.config')(app)
 
