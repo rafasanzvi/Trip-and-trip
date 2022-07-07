@@ -60,3 +60,12 @@ footer {
   font-weight: 800;
   margin-top: 20px;
 }
+
+
+/*/////////////////////////PLANT STYLES/////////////////////////////////////////////////*/
+
+#plantTitle {
+  text-align: center;
+  font-size: 60px;
+  font-family: monospace;
+}
