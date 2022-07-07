@@ -2,8 +2,13 @@
 
     <h1>{{cName}}</h1>
     <hr>
+    <div class="row">
+        {{#each imageURL}}
+        <img class="col-md-6" src="{{this}}" alt="Card image cap">
+        {{/each}}
+    </div>
 
-    <img class="card-img-top" src="{{imageURL}}" alt="Card image cap">
+    {{!-- <img class="card-img-top" src="{{imageURL.[0]}}" alt="Card image cap"> --}}
     <hr>
 
     <p>Scientific name: {{sName}}</p>

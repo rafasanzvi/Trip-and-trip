@@ -4,32 +4,32 @@
 
     <div class="row">
         {{#each plants}}
-        <div class="col-3 mb-5 mt-5">
-            <div class="card" style="width: 18rem;">
 
-                <img class="card-img-top" src="{{imageURL}}" alt="Card image cap">
+        <div class="card col-3 mb-5 mt-5" style="width: 18rem;">
 
-                <div class="card-body">
-                    <h5 class="card-title">{{cName}}</h5>
-                    <p class="card-text">{{sName}}</p>
-                </div>
+            <img class="card-img-top" src="{{imageURL.[0]}}" alt="Card image cap">
 
-                <ul class="list-group list-group-flush">
-                    {{#each region}}
-                    <li class="list-group-item">{{this}}</li>
-                    {{/each}}
-                </ul>
+            <div class="card-body">
+                <h5 class="card-title">{{cName}}</h5>
+                <p class="card-text">{{sName}}</p>
+            </div>
 
-                <div class="card-body">
-                    <a href="/plants/{{id}}" class="btn btn-success btn-sm">Details</a>
-                    <a href="/plants/{{id}}/edit" class="btn btn-warning btn-sm">Edit</a>
-                    <a href="/plants/{{id}}/delete" class="btn btn-danger btn-sm">Delete</a>
-                </div>
+            <ul class="list-group list-group-flush">
+                {{#each region}}
+                <li class="list-group-item">{{this}}</li>
+                {{/each}}
+            </ul>
+
+            <div class="card-body">
+                <a href="/plants/{{id}}" class="btn btn-success btn-sm">Details</a>
+                <a href="/plants/{{id}}/edit" class="btn btn-warning btn-sm">Edit</a>
+                <a href="/plants/{{id}}/delete" class="btn btn-danger btn-sm">Delete</a>
             </div>
         </div>
+        {{/each}}
+
     </div>
 
-    {{/each}}
 
     {{!-- Canvas de chart --}}
     <figure class="one-full-column height-300">

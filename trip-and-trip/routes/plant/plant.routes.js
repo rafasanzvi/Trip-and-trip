@@ -34,12 +34,13 @@ router.post('/create', isLoggedIn, uploaderConfig.single('img'), checkRole('CHAM
     let query = { sName, cName, region, culture, properties, description }
 
     if (req.file) {
-        query = { ...query, $push: { imageURL: req.file.path } }
+        query = { ...query, imageURL: req.file.path }
     }
-
+    console.log(query)
     Plant
-        .create({ query })
-        .then(() => {
+        .create(query)
+        .then(plant => {
+            console.log(plant)
             res.redirect('/plants')
         })
         .catch(error => {
@@ -74,14 +75,19 @@ router.get('/:id/edit', isLoggedIn, checkRole('CHAMAN', 'HIEROPHANT'), (req, res
 
 })
 
-router.post('/:id/edit', isLoggedIn, uploaderConfig.single('img'), checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
+router.post('/:id/edit', isLoggedIn, uploaderConfig.any('img'), checkRole('CHAMAN', 'HIEROPHANT'), (req, res, next) => {
 
     const { sName, cName, region, culture, files, properties, description } = req.body
 
     let query = { sName, cName, region, culture, files, properties, description }
-
-    if (req.file) {
-        query = { ...query, $push: { imageURL: req.file.path } }
+    console.log(req.files)
+    if (req.files) {
+        let paths = []
+        const filesData = req.files
+        filesData.forEach(file =>
+            paths.push(file.path))
+        console.log(paths)
+        query = { ...query, $push: { imageURL: paths } }
     }
 
     const { id } = req.params

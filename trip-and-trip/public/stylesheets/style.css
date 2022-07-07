@@ -16,17 +16,15 @@ h1 {
 
 img {
   width: 100%;
+  height: auto;
 }
 
-/* footer {
-  background-color: #212429;
-  color: white;
-  padding: 10px;
+footer {
   font-size: .9em;
   position: fixed;
   bottom: 0;
   width: 100%;
-} */
+}
 
 .navbar form button {
   background: transparent;
@@ -45,6 +43,10 @@ img {
   margin-top: 50px;
   justify-content: center;
   align-items: center;
+}
+
+.lay-footer {
+  color: white;
 }
 
 #myMap {
