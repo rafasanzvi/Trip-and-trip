@@ -35,7 +35,7 @@ router.post('/register', (req, res, next) => {
 })
 
 
-router.get('/login', (req, res, next) => {
+router.get('/login', isLoggedOut, (req, res, next) => {
 
     res.render('auth/auth-login')
 })

@@ -32,11 +32,23 @@ router.get('/', isLoggedIn, (req, res, next) => {
             let formattedElemData
 
             const newDates = eventsData.map(elem => {
-                formattedDate = formatDate(elem.date)
-                formattedElemData = { ...elem._doc, date: formattedDate }
-                return formattedElemData
+
+                if (elem.date) {
+                    const formattedDate = formatDate(elem.date)
+                    formattedUserData = { ...elem._doc, date: formattedDate }
+                    elem = formattedUserData
+                    console.log('--------------------', formattedUserData)
+                }
+
+                return elem
+
+
+
+                // formattedDate = formatDate(elem.date)
+                // formattedElemData = { ...elem._doc, date: formattedDate }
+                // return formattedElemData
             })
-            console.log(eventsData)
+            console.log('------------------------', newDates)
             res.render('events/event-list', { newDates })
         })
         .catch(err => next(new Error(err)))
@@ -139,7 +151,11 @@ router.post('/:id/edit', isLoggedIn, uploaderConfig.single('img'), checkRole('CH
     }
 
 
-    let query = { date, plants, description, location }
+    let query = { plants, description, location }
+
+    if (req.body.date) {
+        query = { ...query, date }
+    }
 
     if (req.file) {
         query = { ...query, $push: { imageURL: req.file.path } }
