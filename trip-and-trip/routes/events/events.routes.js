@@ -4,12 +4,16 @@ const mongoose = require('mongoose')
 const Event = require('./../../models/Event.model')
 const Plant = require('./../../models/Plant.model')
 const User = require('./../../models/User.model')
+const Comment = require('./../../models/Comment.model')
+
 
 const { isLoggedIn } = require('./../../middleware/session-guard')
 const { checkRole } = require('./../../middleware/role-checker')
 
 const { formatErrorMessage } = require("./../../utils/format-error-message")
 const { formatDate } = require("./../../utils/format-date")
+const { rolesChecker } = require("./../../utils/roles-checker");
+
 const uploaderConfig = require('./../../config/uploader.config')
 
 
@@ -93,14 +97,20 @@ router.get('/:id', isLoggedIn, (req, res, next) => {
 
     const { id } = req.params
 
+    const roles = rolesChecker(req.session.currentUser)
+
+    let formattedEventData
+
     Event
         .findById(id)
-        .populate('organizer plants attendees')
+        .populate('organizer plants attendees comments')
         .then(eventData => {
             const formattedDate = formatDate(eventData.date)
-            let formattedEventData = { ...eventData._doc, date: formattedDate }
-
-            res.render('events/event-details', { eventData: formattedEventData })
+            formattedEventData = { ...eventData._doc, date: formattedDate }
+            return Comment.find({ commentedPlace: eventData.description }).populate('commenter')
+        })
+        .then(commentData => {
+            res.render('events/event-details', { eventData: formattedEventData, commentData, roles })
         })
         .catch(err => next(new Error(err)))
 
@@ -163,6 +173,32 @@ router.post('/:id/join', isLoggedIn, (req, res, next) => {
         .findByIdAndUpdate(id, { $push: { attendees: currentUser._id } })
         .then(() => res.redirect(`/events/${id}`))
         .catch(err => next(new Error(err)))
+
+})
+
+router.post('/:id/comment', isLoggedIn, (req, res, next) => {
+
+    const { currentUser } = req.session
+    const { id } = req.params
+    const { content } = req.body
+    let editComment = { commenter: currentUser._id, content }
+
+    Event
+        .findById(id)
+        .then(eventData => {
+            editComment = { ...editComment, commentedPlace: eventData.description }
+            return Comment.create(editComment)
+        })
+        .then(comment => Event.findByIdAndUpdate(id, { $push: { comments: comment._id } }).populate('comments'))
+        .then(() => res.redirect(`/events/${id}`))
+        .catch(err => console.log(err))
+
+
+    // Comment
+    //     .create(editComment)
+    //     .then(comment => Event.findByIdAndUpdate(id, { $push: { comments: comment._id } }).populate('comments'))
+    //     .then(() => res.redirect(`/events/${id}`))
+    //     .catch(err => console.log(err))
 
 })
 

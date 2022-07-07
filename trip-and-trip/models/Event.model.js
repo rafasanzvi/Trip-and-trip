@@ -43,7 +43,13 @@ const eventSchema = new Schema({
             type: String
         },
         coordinates: [Number]
-    }
+    },
+
+    comments: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Comment'
+    }]
+
 },
 
     {

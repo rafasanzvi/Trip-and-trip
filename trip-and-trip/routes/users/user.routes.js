@@ -67,18 +67,19 @@ router.post('/:id/edit', isLoggedIn, checkOwnerOrHIEROPHANT, uploaderConfig.sing
 router.get('/:id', isLoggedIn, (req, res, next) => {
 
     const { id } = req.params
+    let formattedUserData
 
-    const promises = [
-        User.findById(id).populate('plantsOfInterest comments'),
-        Comment.find().populate('commenter')
-    ]
-
-    Promise
-        .all(promises)
-        .then(([userData, commentData]) => {
+    User
+        .findById(id)
+        .populate('plantsOfInterest comments')
+        .then(userData => {
             const formattedDate = formatDate(userData.dateOfBirth)
-            let formattedUserData = { ...userData._doc, dateOfBirth: formattedDate }
-
+            formattedUserData = { ...userData._doc, dateOfBirth: formattedDate }
+            console.log(userData.username)
+            return Comment.find({ commentedPlace: userData.username }).populate('commenter')
+        })
+        .then(commentData => {
+            // console.log(userData)
             res.render('user/user-details', { userData: formattedUserData, commentData })
         })
         .catch(err => next(new Error(err)))
@@ -90,10 +91,14 @@ router.post('/:id/comment', isLoggedIn, (req, res, next) => {
     const { currentUser } = req.session
     const { id } = req.params
     const { content } = req.body
-    const editComment = { commenter: currentUser._id, content }
+    let editComment = { commenter: currentUser._id, content }
 
-    Comment
-        .create(editComment)
+    User
+        .findById(id)
+        .then(userData => {
+            editComment = { ...editComment, commentedPlace: userData.username }
+            return Comment.create(editComment)
+        })
         .then(comment => User.findByIdAndUpdate(id, { $push: { comments: comment._id } }).populate('comments'))
         .then(() => res.redirect(`/users/${id}`))
         .catch(err => console.log(err))

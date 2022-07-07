@@ -8,7 +8,11 @@ const commentSchema = new Schema({
     commenter: {
         type: Schema.Types.ObjectId,
         ref: 'User'
+    },
+    commentedPlace: {
+        type: String
     }
+
 }, {
     timestamps: true
 });

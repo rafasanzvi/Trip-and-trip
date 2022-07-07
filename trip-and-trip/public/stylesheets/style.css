@@ -1,8 +1,8 @@
 body {
-  background-image: url('./../images/fractals.gif');
+  /* background-image: url('./../images/fractals.gif');
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100vh;
+  height: 100vh; */
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -18,7 +18,7 @@ img {
   width: 100%;
 }
 
-footer {
+/* footer {
   background-color: #212429;
   color: white;
   padding: 10px;
@@ -26,19 +26,19 @@ footer {
   position: fixed;
   bottom: 0;
   width: 100%;
-}
+} */
 
 .navbar form button {
   background: transparent;
   border: none;
 }
 
-/* .hero {
+.hero {
   background-image: url('./../images/fractals.gif');
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
-} */
+}
 
 .index-btn {
   color: white;
