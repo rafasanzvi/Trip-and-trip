@@ -7,7 +7,7 @@ const Comment = require('./../../models/Comment.model')
 const { isLoggedIn } = require('./../../middleware/session-guard')
 const { checkOwnerOrHIEROPHANT } = require('./../../middleware/is-owner')
 
-const { rolesChecker } = require("./../../utils/roles-checker");
+const { rolesChecker } = require("./../../utils/roles-checker")
 const { formatDate } = require("./../../utils/format-date")
 const uploaderConfig = require('./../../config/uploader.config')
 

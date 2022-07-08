@@ -7,16 +7,20 @@ const { isLoggedIn } = require('./../../middleware/session-guard')
 const { checkRole } = require('./../../middleware/role-checker')
 
 const { formatErrorMessage } = require("./../../utils/format-error-message")
+const { rolesChecker } = require("./../../utils/roles-checker")
 const uploaderConfig = require('./../../config/uploader.config')
 
 
 
 router.get('/', isLoggedIn, (req, res, next) => {
 
+    const roles = rolesChecker(req.session.currentUser)
+
+
     Plant
         .find()
         .select({ cName: 1, sName: 1, region: 1, imageURL: 1 })
-        .then(plants => res.render('plant/plants-list', { plants }))
+        .then(plants => res.render('plant/plants-list', { plants, roles }))
         .catch(err => console.log(err))
 
 })
