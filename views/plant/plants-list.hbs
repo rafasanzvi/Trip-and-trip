@@ -1,0 +1,36 @@
+<div class="plantForm">
+
+    <div class="container">
+
+        <h1 id="listTitle">Our magic ingredients</h1>
+
+        <div class="row">
+
+            {{#each plants}}
+
+            <div class="card col-3 mb-5 mt-5 mx-auto bg-transparent plantCard border-light border-3">
+
+                <img class="card-img-top productImg mt-3" src="{{imageURL.[0]}}" alt="Card image cap">
+
+                <div class="card-body">
+                    <h5 class="card-title">{{cName}}</h5>
+                    <p class="card-text">{{sName}}</p>
+                </div>
+
+                <ul class="list-group list-group-flush">
+                    {{#each region}}
+                    <li class="list-group-item">{{this}}</li>
+                    {{/each}}
+                </ul>
+
+                <div class="card-body listButtons">
+                    <a href="/plants/{{id}}" class="buttonGreen mb-2">Details</a>
+                    <a href="/plants/{{id}}/edit" class="buttonBlue mb-2">Edit</a>
+                    <a href="/plants/{{id}}/delete" class="buttonRed">Delete</a>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+
+</div>
