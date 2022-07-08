@@ -1,4 +1,5 @@
 const { Schema, model } = require("mongoose")
+const uniqueValidator = require('mongoose-unique-validator')
 
 const userSchema = new Schema(
   {
@@ -10,7 +11,7 @@ const userSchema = new Schema(
 
     username: {
       type: String,
-      // unique: true,
+      unique: true,
       required: [true, 'Username is required.']
     },
 
@@ -54,6 +55,8 @@ const userSchema = new Schema(
     timestamps: true,
   }
 );
+
+userSchema.plugin(uniqueValidator, { message: '{PATH} already exists!' })
 
 const User = model("User", userSchema)
 
