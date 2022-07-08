@@ -1,0 +1,60 @@
+<div class="eventForm">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+
+            <h1 class="headerForm">Organized by: {{eventData.organizer.username}}</h1>
+
+            <img src="{{eventData.imageURL}}" alt="event" class="userDetail">
+
+            <p>{{eventData.description}}</p>
+
+            <p>Attendees:</p>
+
+            <ul>
+                {{#each eventData.attendees}}
+                <li>{{username}}</li>
+                {{/each}}
+            </ul>
+
+            <p>Event date: {{eventData.date}}</p>
+
+            <p>Plants involved:</p>
+
+            <ul>
+                {{#each eventData.plants}}
+                <li>{{cName}}</li>
+                {{/each}}
+            </ul>
+            <div class="mb-5">
+                <form action="/events/{{eventData._id}}/join" method="POST" style="display: inline-block">
+                    <input type="submit" value="join" class="buttonGreen">
+                </form>
+                {{#if roles.isHIEROPHANT}}
+                <a href="/events/{{eventData._id}}/edit" class="buttonBlue">Edit</a>
+
+                <form action="/events/{{eventData._id}}/delete" method="POST" style="display: inline-block">
+                    <input type="submit" value="delete" class="buttonRed">
+                </form>
+                {{/if}}
+            </div>
+
+
+            <div class="card mb-5 bg-transparent">
+                <div class="card-body">
+                    {{#each commentData}}
+                    <p class="card-title"><strong>{{this.commenter.username}}</strong></p>
+                    <p class="card-text">{{this.content}}</p>
+                    <hr>
+                    {{/each}}
+                </div>
+            </div>
+
+            <form action="/events/{{eventData._id}}/comment" method="post">
+                <textarea class='form-control mb-2' name="content" placeholder="Comment"></textarea>
+                <div class="text-right mb-5">
+                    <button type="submit" class="buttonBlue">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="userList">
+    <div class="container mt-5">
+        <div class="row">
+            {{#each users}}
+            <div class="col-md-4">
+
+                <div class="card border-dark  bg-transparent">
+
+                    <div class="card-body">
+                        <p class="card-title userCard"><strong>{{username}}</strong></p>
+
+                        <p class="card-text userCard">{{role}}</p>
+
+                        <a href="/users/{{id}}" class="buttonGreen">Details</a>
+                        <a href="/users/{{id}}/edit" class="buttonRed">Edit</a>
+
+                        {{#if ../roles.isHIEROPHANT}}
+
+                        <hr>
+                        <form action="/admin/{{id}}/initiate" method="POST" style="display: inline-block">
+                            <input type="submit" value="Initiate" class="buttonBlue">
+                        </form>
+                        <form action="/admin/{{id}}/elevate" method="POST" style="display: inline-block">
+                            <input type="submit" value="Elevate" class="buttonBlue">
+                        </form>
+
+                        {{/if}}
+
+                    </div>
+                </div>
+
+            </div>
+
+            {{/each}}
+        </div>
+    </div>
+</div>

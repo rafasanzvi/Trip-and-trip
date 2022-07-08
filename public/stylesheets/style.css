@@ -1,0 +1,341 @@
+body {
+  /* background-image: url('./../images/fractals.gif');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh; */
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00b7ff;
+}
+
+h1 {
+  color: 15px;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+footer {
+  color: white;
+  font-size: .9em;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.navbar {
+  height: 60px;
+}
+
+.navbar form button {
+  background: transparent;
+  border: none;
+}
+
+.productImg {
+  background-size: cover;
+  object-fit: cover;
+  align-self: center;
+  height: 200px;
+}
+
+.plantDetail {
+  background-size: cover;
+  object-fit: cover;
+  align-self: center;
+  height: 400px;
+}
+
+.userDetail {
+  background-size: cover;
+  object-fit: cover;
+  align-self: center;
+  height: 400px;
+  width: 600px;
+}
+
+.hero {
+  background-image: url('./../images/fractals.gif');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  padding: 50px;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.index-btn {
+  color: white;
+  margin-top: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+.lay-footer {
+  color: white;
+}
+
+
+#myMap {
+  height: 500px;
+
+}
+
+#error {
+  background-color: red;
+  color: white;
+  text-align: center;
+  padding: 5px;
+  font-weight: 800;
+  margin-top: 20px;
+}
+
+
+/*/////////////////////////PLANT STYLES/////////////////////////////////////////////////*/
+
+#listTitle {
+  font-weight: 550;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 60px;
+  font-family: monospace;
+}
+
+.headerForm {
+  font-size: 40px;
+  margin: 20px;
+  text-align: center;
+  font-family: monospace;
+  font-weight: 600;
+}
+
+.plantForm {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(../images/green-leaf-texture-leaf-texture-background.jpg);
+  background-size: cover;
+  padding: 50px;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/*/////////////////////////EVENT STYLES/////////////////////////////////////////////////*/
+
+.eventForm {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../images/geometry.jpg);
+  background-size: cover;
+  padding: 50px;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/*/////////////////////////USER STYLES/////////////////////////////////////////////////*/
+
+.userForm {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../images/metatron.jpg);
+  background-size: cover;
+  padding: 50px;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.userList {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../images/metatron.jpg);
+  background-size: cover;
+  height: 100vh;
+  padding: 50px;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.userCard {
+  font-size: 1.5em;
+  -webkit-text-stroke: 2px black;
+  justify-content: center;
+}
+
+.plantCard {
+  width: 18rem;
+  background-color: transparent;
+
+}
+
+.ourNav {
+  background-color: rgb(7, 49, 27) !important
+}
+
+
+
+/*/////////////////////////BUTTON STYLES/////////////////////////////////////////////////*/
+
+
+
+.buttonGreen {
+  --green: #1BFD9C;
+  font-size: 15px;
+  padding: 0.7em 2.7em;
+  letter-spacing: 0.06em;
+  position: relative;
+  font-family: inherit;
+  border-radius: 0.6em;
+  overflow: hidden;
+  transition: all 0.3s;
+  text-decoration: none;
+  line-height: 1.4em;
+  border: 2px solid var(--green);
+  background: linear-gradient(to right, rgba(27, 253, 156, 0.1) 1%, transparent 40%, transparent 60%, rgba(27, 253, 156, 0.1) 100%);
+  color: var(--green);
+  box-shadow: inset 0 0 10px rgba(27, 253, 156, 0.4), 0 0 9px 3px rgba(27, 253, 156, 0.1);
+}
+
+.buttonGreen:hover {
+  color: #82ffc9;
+  box-shadow: inset 0 0 10px rgba(27, 253, 156, 0.6), 0 0 9px 3px rgba(27, 253, 156, 0.2);
+}
+
+.buttonGreen:before {
+  content: "";
+  position: absolute;
+  left: -4em;
+  width: 4em;
+  height: 100%;
+  top: 0;
+  transition: transform .4s ease-in-out;
+}
+
+.buttonGreen:hover:before {
+  transform: translateX(15em);
+}
+
+
+.buttonBlue {
+  --blue: #2238da;
+  font-size: 15px;
+  padding: 0.7em 2.7em;
+  letter-spacing: 0.06em;
+  position: relative;
+  font-family: inherit;
+  border-radius: 0.6em;
+  overflow: hidden;
+  transition: all 0.3s;
+  text-decoration: none;
+  line-height: 1.4em;
+  border: 2px solid var(--blue);
+  background: linear-gradient(to right, rgba(27, 253, 156, 0.1) 1%, transparent 40%, transparent 60%, rgba(27, 253, 156, 0.1) 100%);
+  color: var(--blue);
+  box-shadow: inset 0 0 10px rgba(27, 253, 156, 0.4), 0 0 9px 3px rgba(30, 55, 195, 0.1);
+}
+
+.buttonBlue:hover {
+  color: #5278e2;
+  box-shadow: inset 0 0 10px rgba(54, 108, 223, 0.6), 0 0 9px 3px rgba(52, 137, 212, 0.2);
+}
+
+.buttonBlue:before {
+  content: "";
+  position: absolute;
+  left: -4em;
+  width: 4em;
+  height: 100%;
+  top: 0;
+  transition: transform .4s ease-in-out;
+}
+
+.buttonBlue:hover:before {
+  transform: translateX(15em);
+}
+
+.buttonRed {
+  --blue: #d12e15;
+  font-size: 15px;
+  padding: 0.7em 2.7em;
+  letter-spacing: 0.06em;
+  position: relative;
+  font-family: inherit;
+  border-radius: 0.6em;
+  overflow: hidden;
+  transition: all 0.3s;
+  text-decoration: none;
+  line-height: 1.4em;
+  border: 2px solid var(--blue);
+  background: linear-gradient(to right, rgba(243, 128, 20, 0.1) 1%, transparent 40%, transparent 60%, rgba(27, 253, 156, 0.1) 100%);
+  color: var(--blue);
+  box-shadow: inset 0 0 10px rgba(253, 99, 27, 0.4), 0 0 9px 3px rgba(214, 108, 9, 0.1);
+}
+
+.buttonRed:hover {
+  color: #5278e2;
+  box-shadow: inset 0 0 10px rgba(220, 26, 15, 0.6), 0 0 9px 3px rgba(220, 147, 38, 0.2);
+}
+
+.buttonRed.before {
+  content: "";
+  position: absolute;
+  left: -4em;
+  width: 4em;
+  height: 100%;
+  top: 0;
+  transition: transform .4s ease-in-out;
+}
+
+.buttonRed:hover:before {
+  transform: translateX(15em);
+}
+
+.listButtons {
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar-dark .navbar-brand {
+  color: rgb(215, 215, 215);
+  font-family: monospace;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: rgb(215, 215, 215);
+  font-family: monospace;
+  font-size: 16px;
+  margin-right: 20px;
+}
+
+.indexHeaders {
+  font-family: monospace;
+  font-weight: 600;
+  font-size: 0px;
+  text-align: center;
+  height: 100%;
+  -webkit-text-stroke: .5px black;
+}
+
+.indexHeaders h1 {
+  font-size: 70px;
+  font-weight: 600;
+}
+
+.indexHeaders h2 {
+  margin: 20px;
+}
+
+.indexHeaders h4 {
+  margin-bottom: 40px;
+}
+
+.indexButtons a {
+  margin: 15px;
+}
+
+.headerLoginForm {
+  text-align: center;
+  font-family: monospace;
+}

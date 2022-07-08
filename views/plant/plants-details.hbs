@@ -1,0 +1,41 @@
+<div class="plantForm">
+    <div class="container">
+
+        <h1>{{cName}}</h1>
+        <hr>
+        <div class="row">
+            {{#each imageURL}}
+            <img class="col-md-6 plantDetail" src="{{this}}" alt="Card image cap">
+            {{/each}}
+        </div>
+
+        {{!-- <img class="card-img-top" src="{{imageURL.[0]}}" alt="Card image cap"> --}}
+        <hr>
+
+        <p>Scientific name: {{sName}}</p>
+
+        <p>Culture: {{culture}}</p>
+
+        <p>Regions:</p>
+
+        <ul>
+            {{#each region}}
+            <li class="list-group-item">{{this}}</li>
+            {{/each}}
+        </ul>
+
+        <p>Properties:</p>
+
+        <ul>
+            {{#each properties}}
+            <li class="list-group-item">{{this}}</li>
+            {{/each}}
+        </ul>
+
+        <p>Description: {{description}}</p>
+        <hr>
+
+        <a href="/plants" class="buttonGreen">Go back</a>
+
+    </div>
+</div>
