@@ -50,6 +50,14 @@ footer {
   height: 400px;
 }
 
+.userDetail {
+  background-size: cover;
+  object-fit: cover;
+  align-self: center;
+  height: 400px;
+  width: 600px;
+}
+
 .hero {
   background-image: url('./../images/fractals.gif');
   background-size: cover;
@@ -203,7 +211,6 @@ footer {
   height: 100%;
   top: 0;
   transition: transform .4s ease-in-out;
-  background: linear-gradient(to right, transparent 1%, rgba(27, 253, 156, 0.1) 40%, rgba(27, 253, 156, 0.1) 60%, transparent 100%);
 }
 
 .buttonGreen:hover:before {
@@ -242,7 +249,6 @@ footer {
   height: 100%;
   top: 0;
   transition: transform .4s ease-in-out;
-  background: linear-gradient(to right, transparent 1%, rgba(36, 46, 236, 0.1) 40%, rgba(27, 99, 253, 0.1) 60%, transparent 100%);
 }
 
 .buttonBlue:hover:before {
@@ -280,7 +286,6 @@ footer {
   height: 100%;
   top: 0;
   transition: transform .4s ease-in-out;
-  background: linear-gradient(to right, transparent 1%, rgba(216, 147, 10, 0.687) 40%, rgba(253, 121, 27, 0.1) 60%, transparent 100%);
 }
 
 .buttonRed:hover:before {
