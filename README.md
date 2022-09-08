@@ -1,6 +1,46 @@
-# Trip and trip
+<div id="title" align="center">
+<h1>Trip and Trip<h1>
+</div>  
 
-# Routes
+ <br>
+  
+<!--HEADER-->
+<div id="header" align="center">
+  <img src="https://media.giphy.com/media/txCo7WXCwZpmM/giphy-downsized-large.gif" width="350" />
+</div>
+<br>
+
+<!--DESCRIPTION-->
+<p>
+This project was done in just 1 week as part of our web development Bootcamp assignments at Ironhack. Requirements: create an app just using JavaScript, HTML, CSS, Handlebars, NodeJS, Express, MongoDB an homemade internal API Rest and an external API using Google Maps.
+  
+The project is based on an encyclopaedia of plants whose characteristics are being researched for medicinal use. The user can access the specific plants and see their characteristics, as well as access a list of events in different parts of the world and register and see their location via Google Maps.  
+</p>
+  
+<!--MAIN FEATURES-->  
+  <h3>Main Features</h3>
+  
+- Role play where we have admin, staff and users with different privileges.
+- Registration and authentication system
+- Protected routes
+- Database of users, events and plants in MongoDB.  
+- Plants gallery, events and users list
+- CRUD system
+- Rendering from back-end  
+
+---
+
+<!--LINK-->
+<div id="link" align="center">
+<img src="https://i.postimg.cc/cJfn2PQn/Portada-Trip-and-trip.jpg" width="400" height="210"/></a>
+</div>
+
+<br>
+
+<h2 align="center">:mushroom: Want to take a look? <a href="https://trip-and-trip.herokuapp.com/plants">Click here</a> :mushroom: </h2>
+  
+  
+ <h3>App routes</h3>
 
 | HTTP Method 	| URI path      	| Description                                    	| JSON 	|
 |-------------	|---------------	|------------------------------------------------	|---------	|
@@ -30,39 +70,3 @@
 | GET         	| `/users/:id` 	| displays user details	| |
 | POST         	| `/users/:id/edit` 	| renders user edit form 	| |
 | POST         	| `/users/:id/edit` 	| edits user 	| |
-
-<!--HEADER-->
-<div id="header" align="center">
-  <h1 align="center"> Trip and Trip</h1>
-  <img src="https://media.giphy.com/media/txCo7WXCwZpmM/giphy-downsized-large.gif" width="350" />
-</div>
-<br>
-
-<!--DESCRIPTION-->
-<p>
- A refreshing and addictive arcade game based on the children's series SpongeBob SquarePants, made for kids and not so kids, where you can have a good time and have a few laughs while earning points from the bottom of the sea.
-  
-This project was done in just **1 week** as part of our web development Bootcamp assignments at **Ironhack**. 
-  
-It was realised by using Canvas technology, HTML, CSS and all the logic made with Javascript.
-It is a video game with two kinds of enemies, a main character, shots, sounds, movements, scenery, lives and points. All made with different graphics, movements, collisions and DOM management.
-</p>
-
----
-
-<!--LINK-->
-<div id="link" align="center">
-<img src="https://i.postimg.cc/pXv1StzD/Bob-Sponge-home.jpg" width="400" height="210"/></a>
-</div>
-
-<br>
-
-<div id="description2" align="center">
-  :ocean:Here you can try it, do not hesitate about it!!:ocean: 
-</div>  
-
-<br>
-
-<div id="link" align="center">
-https://rafasanzvi.github.io/SpongeBobGame/
-</div>
