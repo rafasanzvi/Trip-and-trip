@@ -29,7 +29,7 @@ The project is based on an encyclopaedia of plants whose characteristics are bei
 - Rendering from back-end  
 
 ---
-
+<br>
 <!--LINK-->
 <div id="link" align="center">
 <img src="https://i.postimg.cc/cJfn2PQn/Portada-Trip-and-trip.jpg" width="400" height="210"/></a>
@@ -37,7 +37,7 @@ The project is based on an encyclopaedia of plants whose characteristics are bei
 
 <br>
 
-<h2 align="center">:mushroom: Want to take a look? <a href="https://trip-and-trip.herokuapp.com/plants">Click here</a> :mushroom: </h2>
+<h3 align="center">:mushroom: Want to take a look? <a href="https://trip-and-trip.herokuapp.com/plants">Click here</a> :mushroom: </h3>
   
   
  <h3>App routes</h3>
